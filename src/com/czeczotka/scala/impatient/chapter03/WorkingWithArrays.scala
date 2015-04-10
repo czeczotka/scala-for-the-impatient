@@ -5,6 +5,7 @@ object WorkingWithArrays {
   def main(args: Array[String]) {
     exercise01()
     exercise02()
+    exercise03()
   }
   
   def exercise01() {
@@ -31,5 +32,26 @@ object WorkingWithArrays {
         array(i + 1) = tmp
       }
     }
+  }
+  
+  def exercise03() {
+    val array = getIntArray(5, 10)
+    println("Before: " + array.toBuffer)
+    val swappedArray = arrayWithSwappedAdjacentElements(array)
+    println("After:  " + swappedArray.toBuffer)
+  }
+  
+  def arrayWithSwappedAdjacentElements(array: Array[Int]) = {
+    for (i <- 0 until array.length) 
+      yield
+      if (i + 1 < array.length) {
+        if (i % 2 == 0) {
+          array(i + 1) 
+        } else {
+          array(i - 1)
+        }
+      } else {
+        array(i)
+      }
   }
 }
