@@ -9,6 +9,7 @@ object WorkingWithArrays {
     exercise04()
     exercise05()
     exercise06()
+    exercise07()
   }
   
   def exercise01() {
@@ -108,5 +109,12 @@ object WorkingWithArrays {
   def getSortedReversedArray(array: Array[Int]): Array[Int] = {
     scala.util.Sorting.quickSort(array)
     array.reverse
+  }
+  
+  def exercise07() {
+    val array = getIntArray(10, 5)
+    println("Array with duplicates:     " + array.toBuffer)
+    println("Array without duplicates:  " + array.distinct.toBuffer)
+    println    
   }
 }
