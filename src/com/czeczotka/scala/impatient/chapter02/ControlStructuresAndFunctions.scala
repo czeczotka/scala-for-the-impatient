@@ -7,6 +7,8 @@ object ControlStructuresAndFunctions {
     exercise04()
     exercise05()
     exercise06()
+    exercise07()
+    exercise09()
   }
   
   def exercise01() {
@@ -59,5 +61,28 @@ object ControlStructuresAndFunctions {
     }
     result
   }
+  
+  def exercise07() {
+    println(unicodeProductWithoutLoop("Hello"))
+  }
+  
+  def unicodeProductWithoutLoop(s: String): Long = {
+    s.map(_.toLong).product
+  }
+  
+  def exercise09() {
+    println(recursiveUnicodeProduct("Hello"))
+  }
+  
+  def recursiveUnicodeProduct(s: String): Long = {
+    var result = 1L
+    if (s.length == 1) {
+      result = s(0).toLong
+    } else if (s.length > 1) {
+      result = s(0).toLong * recursiveUnicodeProduct(s.substring(1))
+    }
+    result
+  }
+  
   
 }
