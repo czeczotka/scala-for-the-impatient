@@ -8,6 +8,7 @@ object WorkingWithArrays {
     exercise03()
     exercise04()
     exercise05()
+    exercise06()
   }
   
   def exercise01() {
@@ -90,4 +91,22 @@ object WorkingWithArrays {
   def averageValue(array: Array[Double]): Double = {
     array.sum.toDouble / array.length.toDouble
   } 
+  
+  def exercise06() {
+    var array = getIntArray(10, 10)
+    println("Array:         " + array.toBuffer)
+    array = getSortedReversedArray(array)
+    println("Sorted array:  " + array.toBuffer)
+    println
+    
+    val arrayBuffer = getIntArray(10, 10).toBuffer
+    println("ArrayBuffer:         " + arrayBuffer)
+    println("Sorted arrayBuffer:  " + arrayBuffer.sortWith(_ < _).reverse)
+    println
+  }
+  
+  def getSortedReversedArray(array: Array[Int]): Array[Int] = {
+    scala.util.Sorting.quickSort(array)
+    array.reverse
+  }
 }
