@@ -10,6 +10,7 @@ object WorkingWithArrays {
     exercise05()
     exercise06()
     exercise07()
+    exercise09()
   }
   
   def exercise01() {
@@ -115,6 +116,13 @@ object WorkingWithArrays {
     val array = getIntArray(10, 5)
     println("Array with duplicates:     " + array.toBuffer)
     println("Array without duplicates:  " + array.distinct.toBuffer)
+    println    
+  }
+  
+  def exercise09() {
+    val allTimeZones = java.util.TimeZone.getAvailableIDs
+    val americanTimeZones = allTimeZones.filter(_.contains("America/")).map(_.replace("America/", "")).sorted
+    for(zone <- americanTimeZones) println(zone)
     println    
   }
 }
