@@ -6,6 +6,7 @@ object ControlStructuresAndFunctions {
     exercise01()
     exercise04()
     exercise05()
+    exercise06()
   }
   
   def exercise01() {
@@ -41,8 +42,22 @@ object ControlStructuresAndFunctions {
   }
   
   def countdown(n: Int) {
-    for (i <- (0 to n).reverse) 
+    for (i <- (0 to n).reverse) { 
       print(i + " ")
+    }
+    println
+  }
+  
+  def exercise06() {
+    println(unicodeProduct("Hello"))
+  }
+  
+  def unicodeProduct(s: String): Long = {
+    var result = 1L
+    for (c <- s) {
+      result = result * c.toLong
+    }
+    result
   }
   
 }
