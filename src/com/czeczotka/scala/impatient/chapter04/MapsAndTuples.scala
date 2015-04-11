@@ -16,6 +16,7 @@ object MapsAndTuples {
     exercise05()
     exercise06_weekdays()
     exercise07_javaProperties()
+    exercise08_minmax()
   }
   
   def exercise01() {
@@ -89,6 +90,7 @@ object MapsAndTuples {
         "Saturday"  -> SATURDAY,
         "Sunday"    -> SUNDAY)
     for((key,value) <- map) println(key + " " + value)
+    println
   }
   
   def exercise07_javaProperties() {
@@ -97,6 +99,26 @@ object MapsAndTuples {
     val propsSorted = props.toSeq.sortBy(_._1)
     val max = props.keySet.map(_.length).max
     for((key,value) <- propsSorted) printf("   %-" + max + "s   | %s\n", key, value)
+    println
+  }
+  
+  def exercise08_minmax() {
+    import java.util.Random
+    import scala.collection.mutable.ArrayBuffer
+    val array = Array.fill(20)(new Random().nextInt(20))
+    val (min, max) = minmax(array)
+    println(array.toBuffer)
+    printf("Min %d, max %d\n", min, max)
+    println
+  }
+  
+  def minmax(array: Array[Int]) = {
+    var min, max = array(0)
+    for (number <- array) {
+      if (number < min) min = number
+      if (number > max) max = number
+    }
+    (min, max)
   }
   
   def printMap(title: String, map: Map[String, Int]) {
