@@ -12,8 +12,6 @@ class BankAccount {
     balance -= amount
   }
   
-  def accountBalance(): Double = {
-    balance
-  }
-
+  def accountBalance = balance
+  
 }
