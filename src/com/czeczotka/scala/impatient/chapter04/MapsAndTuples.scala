@@ -1,9 +1,14 @@
 package com.czeczotka.scala.impatient.chapter04
 
 object MapsAndTuples {
+  
+  val FILE = "moby-dick.txt"
+  val SRC = "src"
+  val FILE_PATH = SRC + System.getProperty("file.separator") + FILE
 
   def main(args: Array[String]) {
     exercise01()
+    exercise02()
   }
   
   def exercise01() {
@@ -11,5 +16,21 @@ object MapsAndTuples {
     println("Map of gizmos:            " + map)
     val mapDiscounted = for ((key, value) <- map) yield (key, (value * 0.9).toInt)
     println("Map of discounted gizmos: " + mapDiscounted)
+    println
+  }
+  
+  def exercise02() {
+    val in = new java.util.Scanner(new java.io.File(FILE_PATH))
+    var words = scala.collection.mutable.Map[String, Int]()
+    
+    while (in.hasNext()) {
+      val word = in.next()
+      val score = words.getOrElse(word,  0)
+      words += (word -> (score + 1))
+    }
+    val results = words.toSeq.sortBy(_._2).reverse
+    
+    for ((key, value) <- results)
+      println(key + "    " + value)
   }
 }
