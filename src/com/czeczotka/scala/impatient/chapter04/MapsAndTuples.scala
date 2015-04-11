@@ -1,5 +1,7 @@
 package com.czeczotka.scala.impatient.chapter04
 
+import java.util.TreeMap.TreeMapSpliterator
+
 object MapsAndTuples {
   
   val FILE = "moby-dick.txt"
@@ -11,6 +13,7 @@ object MapsAndTuples {
     exercise02()
     exercise03()
     exercise04()
+    exercise05()
   }
   
   def exercise01() {
@@ -57,6 +60,20 @@ object MapsAndTuples {
       words += (word -> (score + 1))
     }
     printMap("EXERCISE 4", words)    
+  }
+  
+  def exercise05() {
+    import scala.collection.JavaConversions.mapAsScalaMap
+    val in = new java.util.Scanner(new java.io.File(FILE_PATH))
+    var words: scala.collection.mutable.Map[String, Int] = new java.util.TreeMap[String,Int]() 
+
+    while (in.hasNext()) {
+      val word = in.next()
+      val score = words.getOrElse(word,  0)
+      words(word) = score + 1
+    }
+    val results = words.toSeq.sortBy(_._2).reverse
+    printMap("EXERCISE 5", words.toMap)    
   }
   
   def printMap(title: String, map: Map[String, Int]) {
