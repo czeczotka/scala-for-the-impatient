@@ -14,7 +14,8 @@ object MapsAndTuples {
     exercise03()
     exercise04()
     exercise05()
-    exercise06()
+    exercise06_weekdays()
+    exercise07_javaProperties()
   }
   
   def exercise01() {
@@ -77,7 +78,7 @@ object MapsAndTuples {
     printMap("EXERCISE 5", words.toMap)    
   }
   
-  def exercise06() {
+  def exercise06_weekdays() {
     import java.util.Calendar._
     val map = scala.collection.mutable.LinkedHashMap(
         "Monday"    -> MONDAY,
@@ -88,6 +89,14 @@ object MapsAndTuples {
         "Saturday"  -> SATURDAY,
         "Sunday"    -> SUNDAY)
     for((key,value) <- map) println(key + " " + value)
+  }
+  
+  def exercise07_javaProperties() {
+    import scala.collection.JavaConversions.propertiesAsScalaMap
+    val props: scala.collection.Map[String, String] = System.getProperties()
+    val propsSorted = props.toSeq.sortBy(_._1)
+    val max = props.keySet.map(_.length).max
+    for((key,value) <- propsSorted) printf("   %-" + max + "s   | %s\n", key, value)
   }
   
   def printMap(title: String, map: Map[String, Int]) {
