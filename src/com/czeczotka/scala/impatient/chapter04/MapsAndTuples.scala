@@ -14,6 +14,7 @@ object MapsAndTuples {
     exercise03()
     exercise04()
     exercise05()
+    exercise06()
   }
   
   def exercise01() {
@@ -74,6 +75,19 @@ object MapsAndTuples {
     }
     val results = words.toSeq.sortBy(_._2).reverse
     printMap("EXERCISE 5", words.toMap)    
+  }
+  
+  def exercise06() {
+    import java.util.Calendar._
+    val map = scala.collection.mutable.LinkedHashMap(
+        "Monday"    -> MONDAY,
+        "Tuesday"   -> TUESDAY,
+        "Wednesday" -> WEDNESDAY,
+        "Thursday"  -> THURSDAY,
+        "Friday"    -> FRIDAY,
+        "Saturday"  -> SATURDAY,
+        "Sunday"    -> SUNDAY)
+    for((key,value) <- map) println(key + " " + value)
   }
   
   def printMap(title: String, map: Map[String, Int]) {
