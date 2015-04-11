@@ -17,6 +17,8 @@ object MapsAndTuples {
     exercise06_weekdays()
     exercise07_javaProperties()
     exercise08_minmax()
+    exercise09_lteqgt()
+    exercise10_zip()
   }
   
   def exercise01() {
@@ -119,6 +121,32 @@ object MapsAndTuples {
       if (number > max) max = number
     }
     (min, max)
+  }
+  
+  def exercise09_lteqgt() {
+    import java.util.Random
+    import scala.collection.mutable.ArrayBuffer
+    val size = 20
+    val array = Array.fill(size)(new Random().nextInt(size))
+    val value = array(size / 2)
+    val (lt, eq, gt) = lteqgt(array, value)
+    println(array.toBuffer)
+    printf("For %d: less than: %d, equal: %d, greater than: %d\n", value, lt, eq, gt)
+    println
+  }
+  
+  def lteqgt(values: Array[Int], v: Int) = {
+    var lt, eq, gt = 0
+    for (elem <- values) {
+      if (elem < v) lt += 1
+      else if (elem == v) eq += 1
+      else gt += 1
+    }
+    (lt, eq, gt)      
+  }
+  
+  def exercise10_zip() {
+    println("Hello".zip("World"))
   }
   
   def printMap(title: String, map: Map[String, Int]) {
