@@ -10,6 +10,7 @@ object Classes {
     exercise05_student()
     exercise06_person()
     exercise07_myPerson()
+    exercise08_car()
   }
 
   def exercise01_counter() {
@@ -91,6 +92,18 @@ object Classes {
     // we want to forget about it once we extract first and last names
     val person = new MyPerson("Fred Smith")
     println("Person %s %s".format(person.firstname, person.lastname))
+    println
+  }
+  
+  def exercise08_car() {
+    
+    // Car(val manufacturer: String, val model: String, val year: Int) needs to be my
+    // primary constructor so that I can pass all the values
+    
+    val c1 = new Car("Ford", "Fiesta")
+    val c2 = new Car("Ford", "Mondeo", 2005, "ABC123")
+    println(c1)
+    println(c2)
     println
   }
   
