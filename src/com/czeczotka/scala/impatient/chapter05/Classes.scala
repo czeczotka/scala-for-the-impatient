@@ -12,6 +12,7 @@ object Classes {
     exercise07_myPerson()
     exercise08_scalaCar()
     exercise09_javaCar()
+    exercise10_employee()
   }
 
   def exercise01_counter() {
@@ -119,5 +120,17 @@ object Classes {
     println(c1)
     println(c2)
     println
+  }
+  
+  def exercise10_employee() {
+    
+    // Lesson learnt is if you have a val make sure you use primary constructor to set it
+    // it gets very painful to use auxiliary constructors to do that as you can't have a val anymore
+    
+    val employee = new Employee()
+    println("Employee %s with salary %.2f".format(employee.name, employee.salary))
+    
+    val employeeRewritten = new EmployeeRewritten()
+    println("Employee %s with salary %.2f".format(employeeRewritten.name, employeeRewritten.salary))
   }
 }
