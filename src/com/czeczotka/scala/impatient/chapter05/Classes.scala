@@ -5,6 +5,7 @@ object Classes {
   def main(args: Array[String]) {
     exercise01_counter()
     exercise02_bankAccount()
+    exercise03_time()
   }
 
   def exercise01_counter() {
@@ -19,7 +20,15 @@ object Classes {
     val ba = new BankAccount()
     ba.deposit(100.0)
     ba.withdraw(80.0)
-    println("Bank account balance " + ba.accountBalance())
+    println("Bank account balance " + ba.accountBalance)
+  }
+  
+  def exercise03_time() {
+    val t1 = new Time(12, 34)
+    val t2 = new Time(13, 44)
+    val t3 = new Time(10, 15)
+    printf("%s before %s? %b\n", t1, t2, t1.before(t2))
+    printf("%s before %s? %b\n", t1, t3, t1.before(t3))
   }
   
 }
