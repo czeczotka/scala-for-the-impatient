@@ -10,7 +10,8 @@ object Classes {
     exercise05_student()
     exercise06_person()
     exercise07_myPerson()
-    exercise08_car()
+    exercise08_scalaCar()
+    exercise09_javaCar()
   }
 
   def exercise01_counter() {
@@ -95,16 +96,28 @@ object Classes {
     println
   }
   
-  def exercise08_car() {
+  def exercise08_scalaCar() {
     
     // Car(val manufacturer: String, val model: String, val year: Int) needs to be my
     // primary constructor so that I can pass all the values
     
-    val c1 = new Car("Ford", "Fiesta")
-    val c2 = new Car("Ford", "Mondeo", 2005, "ABC123")
+    val c1 = new ScalaCar("Ford", "Fiesta")
+    val c2 = new ScalaCar("Ford", "Mondeo", 2005, "ABC123")
+    println("Scala car")
     println(c1)
     println(c2)
     println
   }
   
+  def exercise09_javaCar() {
+    
+    // In Java 54 lines of code vs 24 in Scala
+    
+    val c1 = new JavaCar("Ford", "Fiesta")
+    val c2 = new JavaCar("Ford", "Mondeo", 2005, "ABC123")
+    println("Java car")
+    println(c1)
+    println(c2)
+    println
+  }
 }

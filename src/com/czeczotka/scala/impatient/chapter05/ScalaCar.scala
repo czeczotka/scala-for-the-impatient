@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter05
 
-class Car(val manufacturer: String, val model: String, val year: Int) {
+class ScalaCar(val manufacturer: String, val model: String, val year: Int) {
   
   def this(manufacturer: String, model: String) {
     this(manufacturer, model, -1)
