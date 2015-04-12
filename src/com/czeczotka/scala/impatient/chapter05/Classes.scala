@@ -8,6 +8,8 @@ object Classes {
     exercise03_time()
     exercise04_timeReimplemented()
     exercise05_student()
+    exercise06_person()
+    exercise07_myPerson()
   }
 
   def exercise01_counter() {
@@ -72,6 +74,24 @@ object Classes {
       public com.czeczotka.scala.impatient.chapter05.Student(java.lang.String, long);
     }
  */
+  }
+  
+  def exercise06_person() {
+    val p1 = new Person(10)
+    println(p1)
+    val p2 = new Person(0)
+    println(p2)
+    val p3 = new Person(-10)
+    println(p3)
+    println
+  }
+  
+  def exercise07_myPerson() {
+    // primary constructor's parameter is a plain parameter as 
+    // we want to forget about it once we extract first and last names
+    val person = new MyPerson("Fred Smith")
+    println("Person %s %s".format(person.firstname, person.lastname))
+    println
   }
   
 }
