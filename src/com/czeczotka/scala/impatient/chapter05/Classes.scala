@@ -6,6 +6,7 @@ object Classes {
     exercise01_counter()
     exercise02_bankAccount()
     exercise03_time()
+    exercise04_timeReimplemented()
   }
 
   def exercise01_counter() {
@@ -14,6 +15,7 @@ object Classes {
     println("Counter current " + c.current())
     c.increment()
     println("Counter current " + c.current())
+    println
   }
   
   def exercise02_bankAccount() {
@@ -21,6 +23,7 @@ object Classes {
     ba.deposit(100.0)
     ba.withdraw(80.0)
     println("Bank account balance " + ba.accountBalance)
+    println
   }
   
   def exercise03_time() {
@@ -29,6 +32,16 @@ object Classes {
     val t3 = new Time(10, 15)
     printf("%s before %s? %b\n", t1, t2, t1.before(t2))
     printf("%s before %s? %b\n", t1, t3, t1.before(t3))
+    println
+  }
+  
+  def exercise04_timeReimplemented() {
+    val t1 = new Time(12, 34)
+    val t2 = new Time(13, 44)
+    val t3 = new Time(10, 15)
+    printf("%s before %s? %b\n", t1, t2, t1.before(t2))
+    printf("%s before %s? %b\n", t1, t3, t1.before(t3))
+    println
   }
   
 }
