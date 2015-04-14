@@ -57,7 +57,7 @@ object Objects {
   
   def exercise06_playingCards() {
     for(card <- PlayingCard.values) {
-      println("Card %s".format(card))
+      println("Card %s %s".format(card.id, card))
     }
     println
   }
