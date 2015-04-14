@@ -10,6 +10,7 @@ object Objects {
     exercise03_origin()
     exercise04_point()
     exercise05_commandLineArguments()
+    exercise06_playingCards()
   }
   
   def exercise01_conversions() {
@@ -52,6 +53,13 @@ object Objects {
   def exercise05_commandLineArguments() {
     // $ scala com.czeczotka.scala.impatient.chapter06.CommandLineArguments Goodbye Cruel World
     // World Cruel Goodbye
+  }
+  
+  def exercise06_playingCards() {
+    for(card <- PlayingCard.values) {
+      println("Card %s".format(card))
+    }
+    println
   }
 
 }
