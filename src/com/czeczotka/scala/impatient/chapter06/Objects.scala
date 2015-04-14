@@ -9,6 +9,7 @@ object Objects {
     exercise02_conversionsOO()
     exercise03_origin()
     exercise04_point()
+    exercise05_commandLineArguments()
   }
   
   def exercise01_conversions() {
@@ -46,6 +47,11 @@ object Objects {
     val p = Point(3, 4)
     println(p.toString())
     println
+  }
+  
+  def exercise05_commandLineArguments() {
+    // $ scala com.czeczotka.scala.impatient.chapter06.CommandLineArguments Goodbye Cruel World
+    // World Cruel Goodbye
   }
 
 }
