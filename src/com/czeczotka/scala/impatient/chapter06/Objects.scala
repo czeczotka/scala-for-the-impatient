@@ -7,6 +7,7 @@ object Objects {
   def main(args: Array[String]) {
     exercise01_conversions()
     exercise02_conversionsOO()
+    exercise03_origin()
     exercise04_point()
   }
   
@@ -27,6 +28,17 @@ object Objects {
     println("%d inches equals %f centimeters".format(inches, InchesToCentimeters.convert(inches)))
     println("%d gallons equals %f litres".format(gallons, GallonsToLiters.convert(gallons)))
     println("%d miles equals %f kilometers".format(miles, MilesToKilometers.convert(miles)))
+    println
+  }
+  
+  def exercise03_origin() {
+    
+    // you can access x and y directly, yuck!
+    
+    val o = new Origin()
+    o.x = 11
+    o.y = 12
+    println(o)
     println
   }
     
