@@ -12,6 +12,7 @@ object Objects {
     exercise05_commandLineArguments()
     exercise06_playingCards()
     exercise07_playingCardsRed()
+    exercise08_rgb()
   }
   
   def exercise01_conversions() {
@@ -66,6 +67,13 @@ object Objects {
   def exercise07_playingCardsRed() {
     for(card <- PlayingCard.values) {
       println("Card %s %s is red? %b".format(card.id, card, PlayingCard.isRed(card)))
+    }
+    println
+  }
+  
+  def exercise08_rgb() {
+    for(colour <- RGB.values) {
+      println("Colour %s".format(colour.id.toHexString))
     }
     println
   }
