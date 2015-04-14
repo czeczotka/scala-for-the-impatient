@@ -11,6 +11,7 @@ object Objects {
     exercise04_point()
     exercise05_commandLineArguments()
     exercise06_playingCards()
+    exercise07_playingCardsRed()
   }
   
   def exercise01_conversions() {
@@ -58,6 +59,13 @@ object Objects {
   def exercise06_playingCards() {
     for(card <- PlayingCard.values) {
       println("Card %s %s".format(card.id, card))
+    }
+    println
+  }
+  
+  def exercise07_playingCardsRed() {
+    for(card <- PlayingCard.values) {
+      println("Card %s %s is red? %b".format(card.id, card, PlayingCard.isRed(card)))
     }
     println
   }

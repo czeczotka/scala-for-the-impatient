@@ -6,5 +6,9 @@ object PlayingCard extends Enumeration {
   val DIAMOND = Value("♦")
   val CLUB    = Value("♣")
   val SPADE   = Value("♠")
+  
+  def isRed(card: PlayingCard.Value) = {
+    (card == HEART || card == DIAMOND)
+  }
 
 }
