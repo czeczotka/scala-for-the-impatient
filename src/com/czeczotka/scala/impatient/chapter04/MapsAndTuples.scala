@@ -1,7 +1,5 @@
 package com.czeczotka.scala.impatient.chapter04
 
-import java.util.TreeMap.TreeMapSpliterator
-
 object MapsAndTuples {
   
   val FILE = "moby-dick.txt"
