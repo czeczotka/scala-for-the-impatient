@@ -8,6 +8,10 @@ object PackagesAndImports {
     exercise01_imports()
     exercise02_puzzler()
     exercise03_random()
+    exercise04()
+    exercise05()
+    exercise06_copyHashMap()
+    exercise07_innermostScope()
   } 
   
   def exercise01_imports() {
@@ -27,6 +31,32 @@ object PackagesAndImports {
       println("Random integer: " + random.nextInt())
     for (i <- 0 to reps)
       println("Random double:  " + random.nextDouble())
+    println
   }
-
+  
+  def exercise04() {
+    // "A package can contain classes, objects and traits but not the definitions of functions or variables"
+  }
+  
+  def exercise05() {
+    // Assuming com is a top-level package it would be available 
+    // to all classes underneath com i.e.: com.horstmann.impatient
+  }
+  
+  def exercise06_copyHashMap() {
+    val javaHashMap = new java.util.HashMap[String, String]()
+    javaHashMap.put("England", "London")
+    javaHashMap.put("Scotland", "Edinburgh")
+    javaHashMap.put("Wales", "Cardiff")
+    javaHashMap.put("Northern Ireland", "Belfast")
+    
+    val scalaHashMap = HashMapCopier.copy(javaHashMap)
+    println(scalaHashMap)
+    println
+  }
+  
+  def exercise07_innermostScope() {
+    // see HashMapCopier 
+  }
+  
 }
