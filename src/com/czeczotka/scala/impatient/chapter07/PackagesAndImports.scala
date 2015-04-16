@@ -12,6 +12,8 @@ object PackagesAndImports {
     exercise05()
     exercise06_copyHashMap()
     exercise07_innermostScope()
+    exercise08_importJava()
+    exercise09_importSystem()
   } 
   
   def exercise01_imports() {
@@ -57,6 +59,16 @@ object PackagesAndImports {
   
   def exercise07_innermostScope() {
     // see HashMapCopier 
+  }
+  
+  def exercise08_importJava() {
+    // wild card imports are generally not a good idea
+    // especially in a top level package which has many subpackages
+  }
+  
+  def exercise09_importSystem() {
+    // run command-line:
+    // scala com.czeczotka.scala.impatient.chapter07.ImportSystem
   }
   
 }
