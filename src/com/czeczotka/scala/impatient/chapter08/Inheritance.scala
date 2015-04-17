@@ -1,9 +1,6 @@
 package com.czeczotka.scala.impatient.chapter08
 
-import com.czeczotka.scala.impatient.chapter08.exercise.CheckingAccount
-import com.czeczotka.scala.impatient.chapter08.exercise.SavingsAccount
-import com.czeczotka.scala.impatient.chapter08.exercise.SingleItem
-import com.czeczotka.scala.impatient.chapter08.exercise.Bundle
+import com.czeczotka.scala.impatient.chapter08.exercise._
 
 object Inheritance {
   
@@ -11,6 +8,7 @@ object Inheritance {
     exercise01_bankAccount()
     exercise02_savingsAccount()
     exercise04_items()
+    exercise05_points()
   }
   
   def exercise01_bankAccount() {
@@ -50,6 +48,15 @@ object Inheritance {
     println("Item 2: " + item2)
     println("Item 3: " + item3)
     println(bundle)
+    println
+  }
+
+  def exercise05_points() {
+    val point = new Point(4, 5)
+    val labeledPoint = new LabeledPoint("Black Thursday", 1929, 230.07f)
+
+    println(point)
+    println(labeledPoint)
     println
   }
 }
