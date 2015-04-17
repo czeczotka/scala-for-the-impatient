@@ -1,8 +1,10 @@
 package com.czeczotka.scala.impatient.chapter08.exercise
 
-/**
- * Created by jakub on 17/04/2015.
- */
-class SecretAgent {
+
+class SecretAgent(codename: String) extends Person(codename) {
+
+  override val name = "secret"
+
+  override val toString = "secret"
 
 }

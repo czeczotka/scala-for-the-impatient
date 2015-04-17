@@ -10,6 +10,7 @@ object Inheritance {
     exercise04_items()
     exercise05_points()
     exercise06_shapes()
+    exercise08_person()
   }
   
   def exercise01_bankAccount() {
@@ -67,5 +68,30 @@ object Inheritance {
     println(r)
     println(c)
     println
+  }
+
+  def exercise08_person() {
+    val p = new Person("Jakub")
+    val s = new SecretAgent("007")
+
+  /*
+    jakub$ javap -private  com.czeczotka.scala.impatient.chapter08.exercise.Person
+    Compiled from "Person.scala"
+    public class com.czeczotka.scala.impatient.chapter08.exercise.Person {
+      private final java.lang.String name;
+      public java.lang.String name();
+      public java.lang.String toString();
+      public com.czeczotka.scala.impatient.chapter08.exercise.Person(java.lang.String);
+    }
+    jakub$ javap -private  com.czeczotka.scala.impatient.chapter08.exercise.SecretAgent
+    Compiled from "SecretAgent.scala"
+    public class com.czeczotka.scala.impatient.chapter08.exercise.SecretAgent extends com.czeczotka.scala.impatient.chapter08.exercise.Person {
+      private final java.lang.String name;
+      private final java.lang.String toString;
+      public java.lang.String name();
+      public java.lang.String toString();
+      public com.czeczotka.scala.impatient.chapter08.exercise.SecretAgent(java.lang.String);
+    }
+   */
   }
 }

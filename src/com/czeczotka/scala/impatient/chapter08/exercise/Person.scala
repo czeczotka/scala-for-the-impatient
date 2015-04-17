@@ -1,8 +1,7 @@
 package com.czeczotka.scala.impatient.chapter08.exercise
 
-/**
- * Created by jakub on 17/04/2015.
- */
-class Person {
+class Person(val name: String) {
+
+  override def toString = getClass.getName + "[name=" + name + "]"
 
 }
