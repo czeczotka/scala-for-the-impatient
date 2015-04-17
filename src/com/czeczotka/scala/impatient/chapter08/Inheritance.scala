@@ -3,12 +3,13 @@ package com.czeczotka.scala.impatient.chapter08
 import com.czeczotka.scala.impatient.chapter08.exercise._
 
 object Inheritance {
-  
+
   def main(args: Array[String]) {
     exercise01_bankAccount()
     exercise02_savingsAccount()
     exercise04_items()
     exercise05_points()
+    exercise06_shapes()
   }
   
   def exercise01_bankAccount() {
@@ -57,6 +58,14 @@ object Inheritance {
 
     println(point)
     println(labeledPoint)
+    println
+  }
+
+  def exercise06_shapes() {
+    val r = new Rectangle(15,20, 5, 10)
+    val c = new Circle(20, 25, 5)
+    println(r)
+    println(c)
     println
   }
 }
