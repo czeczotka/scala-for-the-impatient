@@ -1,5 +1,7 @@
 /bin/
+*.iml
 .classpath
 .project
 .cache
 .settings
+.idea/
