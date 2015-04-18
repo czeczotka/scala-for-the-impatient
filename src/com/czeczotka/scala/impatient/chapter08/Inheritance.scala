@@ -12,6 +12,7 @@ object Inheritance {
     exercise06_shapes()
     exercise08_person()
     exercise09_creature()
+    exercise10_protected()
   }
   
   def exercise01_bankAccount() {
@@ -107,5 +108,9 @@ object Inheritance {
     println(c)
     println(a)
     println
+  }
+
+  def exercise10_protected() {
+    // this constructor will only be available for this class and its subclasses
   }
 }
