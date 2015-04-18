@@ -21,9 +21,11 @@ object FilesAndRegularExpressions {
   def main(args: Array[String]) {
     exercise01_reverseLines()
     exercise02_tabs()
+    exercise03_12characters()
   }
 
   def exercise01_reverseLines() {
+    println("EXERCISE 1: reverse lines in a file")
     val in = Source.fromFile(EX1_FILE_PATH, "UTF-8")
     val reversedLines = in.getLines().toBuffer.reverse
     in.close()
@@ -34,6 +36,7 @@ object FilesAndRegularExpressions {
   }
   
   def exercise02_tabs() {
+    println("EXERCISE 2: replace tabs with spaces")
     val in = Source.fromFile(EX2_FILE_PATH, "UTF-8")
     val inputString = in.mkString
     in.close()
@@ -47,5 +50,11 @@ object FilesAndRegularExpressions {
       }
     }
     out.close()
+  }
+  
+  def exercise03_12characters() {
+    println("EXERCISE 3: print all words with more than 12 characters")
+    for (word <- Source.fromFile(EX1_FILE_PATH, "UTF-8").mkString.split("\\s+").filter(_.length() > 12)) print("%s(%d), ".format(word, word.length()))
+    println
   }
 }
