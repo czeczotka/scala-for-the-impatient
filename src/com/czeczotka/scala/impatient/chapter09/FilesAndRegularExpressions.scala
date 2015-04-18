@@ -16,12 +16,17 @@ object FilesAndRegularExpressions {
 
   val EX2_FILE = "moby-dick-copy.txt"
   val EX2_FILE_PATH = SRC + System.getProperty("file.separator") + EX2_FILE
+  
+  val EX4_FILE = "floating-point-numbers.txt"
+  val EX4_FILE_PATH = SRC + System.getProperty("file.separator") + EX4_FILE
+
 
 
   def main(args: Array[String]) {
     exercise01_reverseLines()
     exercise02_tabs()
     exercise03_12characters()
+    exercise04_floatingPointNumbers()
   }
 
   def exercise01_reverseLines() {
@@ -55,6 +60,18 @@ object FilesAndRegularExpressions {
   def exercise03_12characters() {
     println("EXERCISE 3: print all words with more than 12 characters")
     for (word <- Source.fromFile(EX1_FILE_PATH, "UTF-8").mkString.split("\\s+").filter(_.length() > 12)) print("%s(%d), ".format(word, word.length()))
+    println
+  }
+  
+  def exercise04_floatingPointNumbers() {
+    println("EXERCISE 4: Floating-point numbers in a file")
+    val source = Source.fromFile(EX4_FILE_PATH, "UTF-8")
+    val tokens = source.mkString.split("\\s+") 
+    val numbers = for (token <- tokens) yield token.toDouble
+    println("Sum of all numbers " + numbers.sum)
+    println("Average value " + numbers.sum / numbers.size)
+    println("Maximum value " + numbers.max)
+    println("Minimum value " + numbers.min)
     println
   }
 }
