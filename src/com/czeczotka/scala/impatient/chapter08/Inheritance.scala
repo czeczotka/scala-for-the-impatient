@@ -11,6 +11,7 @@ object Inheritance {
     exercise05_points()
     exercise06_shapes()
     exercise08_person()
+    exercise09_creature()
   }
   
   def exercise01_bankAccount() {
@@ -93,5 +94,18 @@ object Inheritance {
       public com.czeczotka.scala.impatient.chapter08.exercise.SecretAgent(java.lang.String);
     }
    */
+  }
+
+  def exercise09_creature() {
+
+    // without any changes ant's env array is of size 0 (see page 93 for explanations)
+    // with creature's range changed from val to def the size is still 0 (see 5. for explanationi)
+    // but with ant's range changed from val to def too the size is 2 (it's evaluate when called)
+
+    val c = new Creature()
+    val a = new Ant()
+    println(c)
+    println(a)
+    println
   }
 }
