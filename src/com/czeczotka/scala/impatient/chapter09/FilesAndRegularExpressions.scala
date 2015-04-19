@@ -3,6 +3,7 @@ package com.czeczotka.scala.impatient.chapter09
 import java.io.PrintWriter
 
 import scala.io.Source
+import scala.math.pow
 
 object FilesAndRegularExpressions {
 
@@ -19,14 +20,17 @@ object FilesAndRegularExpressions {
   
   val EX4_FILE = "floating-point-numbers.txt"
   val EX4_FILE_PATH = SRC + System.getProperty("file.separator") + EX4_FILE
+  
+  val EX5_FILE = "powers-of-2.txt"
+  val EX5_FILE_PATH = SRC + System.getProperty("file.separator") + EX5_FILE
 
-
-
+  
   def main(args: Array[String]) {
     exercise01_reverseLines()
     exercise02_tabs()
     exercise03_12characters()
     exercise04_floatingPointNumbers()
+    exercise05_powersOf2()
   }
 
   def exercise01_reverseLines() {
@@ -38,6 +42,7 @@ object FilesAndRegularExpressions {
     val out = new PrintWriter(EX1_OUTPUT_PATH)
     for (line <- reversedLines) out.println(line)
     out.close()
+    println
   }
   
   def exercise02_tabs() {
@@ -55,11 +60,13 @@ object FilesAndRegularExpressions {
       }
     }
     out.close()
+    println
   }
   
   def exercise03_12characters() {
     println("EXERCISE 3: print all words with more than 12 characters")
     for (word <- Source.fromFile(EX1_FILE_PATH, "UTF-8").mkString.split("\\s+").filter(_.length() > 12)) print("%s(%d), ".format(word, word.length()))
+    println
     println
   }
   
@@ -74,4 +81,43 @@ object FilesAndRegularExpressions {
     println("Minimum value " + numbers.min)
     println
   }
+  
+  def exercise05_powersOf2() {
+    println("EXERCISE 5: Powers of 2 in a file")
+    import scala.collection.mutable.ArrayBuffer
+    val first = 0
+    val last = 20
+    val results = ArrayBuffer[(Int, Double)]()
+    
+    for(i <- first to last) {
+      val elem = (pow(2, i).toInt, pow(2, -i))
+      results += elem
+    }
+      
+    var powerLength = 0
+    var minusPowerLength = 0
+    for(i <- first to last) {
+      val (power, minusPower) = results(i)
+      if (power.toString().length() > powerLength) {
+        powerLength = power.toString().length()
+      }
+      if (minusPower.toString().length() > minusPowerLength) {
+        minusPowerLength = minusPower.toString().length()
+      }
+    }
+    
+    val format = new java.text.DecimalFormat("0.###########")
+//    for(i <- first to last) { 
+//      println("%2d   %7d   %s".format(i, pow(2, i).toInt, format.format(pow(2, -i))))
+//    }
+    
+    val out = new PrintWriter(EX5_FILE_PATH)
+    for(i <- first to last) {
+      out.println("  %7d   %s".format(pow(2, i).toInt, format.format(pow(2, -i))))
+    }
+    out.print(SPACES_FOR_TAB)
+    out.close()
+    println
+  }
 }
+
