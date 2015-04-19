@@ -83,7 +83,7 @@ object FilesAndRegularExpressions {
   }
   
   def exercise05_powersOf2() {
-    println("EXERCISE 5: Powers of 2 in a file")
+    println("EXERCISE 5: Powers of 2 in the file " + EX5_FILE_PATH)
     import scala.collection.mutable.ArrayBuffer
     val first = 0
     val last = 20
