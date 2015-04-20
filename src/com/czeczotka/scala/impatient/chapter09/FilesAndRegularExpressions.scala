@@ -23,6 +23,9 @@ object FilesAndRegularExpressions {
   
   val EX5_FILE = "powers-of-2.txt"
   val EX5_FILE_PATH = SRC + System.getProperty("file.separator") + EX5_FILE
+  
+  val EX6_FILE = "search-regex.txt"
+  val EX6_FILE_PATH = SRC + System.getProperty("file.separator") + EX6_FILE
 
   
   def main(args: Array[String]) {
@@ -31,6 +34,8 @@ object FilesAndRegularExpressions {
     exercise03_12characters()
     exercise04_floatingPointNumbers()
     exercise05_powersOf2()
+//    exercise06_searchRegex()
+    exercise10_serializablePerson()
   }
 
   def exercise01_reverseLines() {
@@ -119,5 +124,33 @@ object FilesAndRegularExpressions {
     out.close()
     println
   }
+  
+  def exercise10_serializablePerson() {
+    println("EXERCISE 10: serializable person")
+    import exercise.Person
+    val steve = new Person("Steve")
+    val cay = new Person("Cay")
+    val martin = new Person("Martin")
+    val jane = new Person("Jane")
+    val john = new Person("John")
+    
+    cay.friends = List(martin)
+    john.friends = List(steve, cay, martin, jane)
+    jane.friends = List(cay, john)
+    
+    val people = Array(steve, cay, martin, jane, john)
+    println ("People before save: " + people.toBuffer)
+    
+    import java.io._
+    val file = File.createTempFile("impatient-", ".txt")
+    println("Output file " + file.getAbsolutePath())
+    val out = new ObjectOutputStream(new FileOutputStream(file))
+    out.writeObject(people)
+    out.close()
+    
+    val in = new ObjectInputStream(new FileInputStream(file))
+    val savedPeople = in.readObject().asInstanceOf[Array[Person]]
+    println("People after save:  " + savedPeople.toBuffer)    
+    println
+  }
 }
-
