@@ -26,6 +26,9 @@ object FilesAndRegularExpressions {
   
   val EX6_FILE = "search-regex.txt"
   val EX6_FILE_PATH = SRC + System.getProperty("file.separator") + EX6_FILE
+  
+  val EX7_FILE = "not-floating-point-numbers.txt"
+  val EX7_FILE_PATH = SRC + System.getProperty("file.separator") + EX7_FILE
 
   
   def main(args: Array[String]) {
@@ -34,7 +37,7 @@ object FilesAndRegularExpressions {
     exercise03_12characters()
     exercise04_floatingPointNumbers()
     exercise05_powersOf2()
-//    exercise06_searchRegex()
+    exercise07_notFloatingPointNumbers()
     exercise10_serializablePerson()
   }
 
@@ -112,16 +115,21 @@ object FilesAndRegularExpressions {
     }
     
     val format = new java.text.DecimalFormat("0.###########")
-//    for(i <- first to last) { 
-//      println("%2d   %7d   %s".format(i, pow(2, i).toInt, format.format(pow(2, -i))))
-//    }
-    
     val out = new PrintWriter(EX5_FILE_PATH)
     for(i <- first to last) {
       out.println("  %7d   %s".format(pow(2, i).toInt, format.format(pow(2, -i))))
     }
     out.print(SPACES_FOR_TAB)
     out.close()
+    println
+  }
+  
+  def exercise07_notFloatingPointNumbers() {
+    println("EXERCISE 7: Not floating-point numbers in a file")
+    val source = Source.fromFile(EX7_FILE_PATH, "UTF-8").mkString
+    val strings = source.split("""-?(\d\.\d*|\.\d+)""").toArray
+    for (string <- strings) print(string + " ")
+    println
     println
   }
   
