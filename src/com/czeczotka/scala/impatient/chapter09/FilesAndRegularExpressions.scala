@@ -31,7 +31,6 @@ object FilesAndRegularExpressions {
   val EX7_FILE = "not-floating-point-numbers.txt"
   val EX7_FILE_PATH = SRC + SEPARATOR + EX7_FILE
 
-  
   def main(args: Array[String]) {
     exercise01_reverseLines()
     exercise02_tabs()
@@ -40,6 +39,7 @@ object FilesAndRegularExpressions {
     exercise05_powersOf2()
     exercise07_notFloatingPointNumbers()
     exercise08_imgTags()
+    exercise09_countClassFiles()
     exercise10_serializablePerson()
   }
 
@@ -144,7 +144,30 @@ object FilesAndRegularExpressions {
     }
     println
   }
-  
+
+  def exercise09_countClassFiles() {
+    println("EXERCISE 9: count class files")
+    val dir = new java.io.File(".")
+    val result = countClassFiles(dir)
+    println(s"Found $result class files")
+    println
+  }
+
+  def countClassFiles(file: java.io.File): Int = {
+    var result = 0
+    for (subFile <- file.listFiles) {
+      if (subFile.isDirectory) {
+        result += countClassFiles(subFile)
+      } else {
+        if (subFile.getAbsolutePath.endsWith(".class")) {
+          result += 1
+          println(subFile.getAbsolutePath)
+        }
+      }
+    }
+    result
+  }
+
   def exercise10_serializablePerson() {
     println("EXERCISE 10: serializable person")
     import exercise.Person
