@@ -38,6 +38,7 @@ object FilesAndRegularExpressions {
     exercise04_floatingPointNumbers()
     exercise05_powersOf2()
     exercise07_notFloatingPointNumbers()
+    exercise08_imgTags()
     exercise10_serializablePerson()
   }
 
@@ -130,6 +131,16 @@ object FilesAndRegularExpressions {
     val strings = source.split("""-?(\d\.\d*|\.\d+)""").toArray
     for (string <- strings) print(string + " ")
     println
+    println
+  }
+  
+  def exercise08_imgTags() {
+    println("EXERCISE 8: Printing src attribues of all img tags")
+    val page = Source.fromURL("http://www.bbc.co.uk/", "UTF-8").mkString
+    val imgTagPattern = """<img(.*?)src="(http.*?)"(.*?)>""".r
+    for (imgTagPattern(_, src, _) <- imgTagPattern.findAllIn(page)) {
+      println(src)
+    }
     println
   }
   
