@@ -7,28 +7,29 @@ import scala.math.pow
 
 object FilesAndRegularExpressions {
 
+  val SEPARATOR = System.getProperty("file.separator")
   val SPACES_FOR_TAB = "  "
   val SRC = "src"
   
   val EX1_FILE = "moby-dick.txt"
   val EX1_OUTPUT = "moby-dick-reversed.txt"
-  val EX1_FILE_PATH = SRC + System.getProperty("file.separator") + EX1_FILE
-  val EX1_OUTPUT_PATH = SRC + System.getProperty("file.separator") + EX1_OUTPUT
+  val EX1_FILE_PATH = SRC + SEPARATOR + EX1_FILE
+  val EX1_OUTPUT_PATH = SRC + SEPARATOR + EX1_OUTPUT
 
   val EX2_FILE = "moby-dick-copy.txt"
-  val EX2_FILE_PATH = SRC + System.getProperty("file.separator") + EX2_FILE
+  val EX2_FILE_PATH = SRC + SEPARATOR + EX2_FILE
   
   val EX4_FILE = "floating-point-numbers.txt"
-  val EX4_FILE_PATH = SRC + System.getProperty("file.separator") + EX4_FILE
+  val EX4_FILE_PATH = SRC + SEPARATOR + EX4_FILE
   
   val EX5_FILE = "powers-of-2.txt"
-  val EX5_FILE_PATH = SRC + System.getProperty("file.separator") + EX5_FILE
+  val EX5_FILE_PATH = SRC + SEPARATOR + EX5_FILE
   
   val EX6_FILE = "search-regex.txt"
-  val EX6_FILE_PATH = SRC + System.getProperty("file.separator") + EX6_FILE
+  val EX6_FILE_PATH = SRC + SEPARATOR + EX6_FILE
   
   val EX7_FILE = "not-floating-point-numbers.txt"
-  val EX7_FILE_PATH = SRC + System.getProperty("file.separator") + EX7_FILE
+  val EX7_FILE_PATH = SRC + SEPARATOR + EX7_FILE
 
   
   def main(args: Array[String]) {
