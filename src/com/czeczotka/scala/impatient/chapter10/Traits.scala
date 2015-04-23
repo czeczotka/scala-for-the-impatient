@@ -1,14 +1,16 @@
 package com.czeczotka.scala.impatient.chapter10
 
-import com.czeczotka.scala.impatient.chapter10.exercise.{OrderedPoint, RectangleLike}
+import com.czeczotka.scala.impatient.chapter09.exercise.Person
+import com.czeczotka.scala.impatient.chapter10.exercise._
 
 object Traits {
-
 
   def main(args: Array[String]) {
     exercise01_rectangle()
     exercise02_orderedPoint()
+    exercise04_cryptoLogger()
   }
+
   def exercise01_rectangle() {
     println("EXERCISE 1: RectangleLike trait")
     val egg = new java.awt.geom.Ellipse2D.Double(5, 10, 20, 30) with RectangleLike
@@ -29,5 +31,16 @@ object Traits {
     println(s"$p2 < $p3? ${p2 < p3}" )
     println(s"$p3 < $p1? ${p3 < p1}" )
     println(s"$p2 < $p2? ${p2 < p2}" )
+  }
+
+  def exercise04_cryptoLogger() {
+    println("EXERCISE 4: CryptoLogger with Caesar cipher")
+    val person = new Person("John") with ConsoleLogger with CryptoLogger
+    person.key = -3
+    person.log("Hello World")
+    person.key = 3
+    person.log("Hello World")
+    person.key = 0
+    person.log("Hello World")
   }
 }
