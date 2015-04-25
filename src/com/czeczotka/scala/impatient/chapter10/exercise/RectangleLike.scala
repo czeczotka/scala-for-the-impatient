@@ -10,8 +10,8 @@ trait RectangleLike extends java.awt.geom.Ellipse2D {
     this.setFrame(getX, getY, getWidth + width, getHeight + height)
   }
 
-  override def toString() = {
-    s"x = $getX, y = $getY, width = $getWidth, heigth = $getHeight"
+  override def toString = {
+    s"x = $getX, y = $getY, width = $getWidth, height = $getHeight"
   }
 
 }
