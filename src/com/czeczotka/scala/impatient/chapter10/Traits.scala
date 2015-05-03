@@ -5,10 +5,12 @@ import com.czeczotka.scala.impatient.chapter10.exercise._
 
 object Traits {
 
+
   def main(args: Array[String]) {
     exercise01_rectangle()
     exercise02_orderedPoint()
     exercise04_cryptoLogger()
+    exercise05_propertyChangeSupport()
   }
 
   def exercise01_rectangle() {
@@ -42,5 +44,14 @@ object Traits {
     person.log("Hello World")
     person.key = 0
     person.log("Hello World")
+  }
+
+  def exercise05_propertyChangeSupport() {
+    println("EXERCISE 5: PropertyChangeSupport in Scala")
+    val javaBean = new MyBean()
+    println(javaBean.isInstanceOf[java.beans.PropertyChangeSupport])
+
+    val scalaBean = new Person("John") with PropertyChangeSupportInScala
+//    scalaBean.
   }
 }
