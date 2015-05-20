@@ -1,6 +1,7 @@
 package com.czeczotka.scala.impatient.chapter11
 
 import com.czeczotka.scala.impatient.chapter11.exercise.Fraction
+import com.czeczotka.scala.impatient.chapter11.exercise.Money
 
 object Operators {
 
@@ -9,7 +10,7 @@ object Operators {
     exercise01_precedence()
     exercise02_pow()
     exercise03_fraction()
-
+    exercise04_money()
   }
 
   def exercise01_precedence() = {
@@ -28,7 +29,7 @@ object Operators {
   def exercise02_pow() {
     // because ^ is used as a binary XOR bitwise operator like in Java
   }
-  
+
   def exercise03_fraction() {
     println("EXERCISE 3: Fraction class")
     val f1 = new Fraction(5, 2)
@@ -43,4 +44,20 @@ object Operators {
     println
   }
 
+  def exercise04_money() {
+    println("EXERCISE 4: Money class")
+
+    // Only implementing * for ints, otherwise we would need to define rounding policy
+
+    val m1 = Money(1, 75)
+    val m2 = Money(0, 50)
+
+    println(s"$m1 + $m2 = ${m1 + m2}")
+    println(s"$m1 - $m2 = ${m1 - m2}")
+    println(s"$m1 == $m2 = ${m1 == m2}")
+    println(s"$m1 < $m2 = ${m1 < m2}")
+    println(s"$m1 > $m2 = ${m1 > m2}")
+    println(s"$m1 * 5 = ${m1 * 5}")
+    println
+  }
 }
