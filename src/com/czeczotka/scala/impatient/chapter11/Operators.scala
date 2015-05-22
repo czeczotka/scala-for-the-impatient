@@ -1,7 +1,6 @@
 package com.czeczotka.scala.impatient.chapter11
 
-import com.czeczotka.scala.impatient.chapter11.exercise.Fraction
-import com.czeczotka.scala.impatient.chapter11.exercise.Money
+import com.czeczotka.scala.impatient.chapter11.exercise.{Table, Fraction, Money}
 
 object Operators {
 
@@ -11,7 +10,9 @@ object Operators {
     exercise02_pow()
     exercise03_fraction()
     exercise04_money()
+    exercise05_htmlTable()
   }
+
 
   def exercise01_precedence() = {
     println("EXERCISE 1: Precedence rules")
@@ -59,5 +60,14 @@ object Operators {
     println(s"$m1 > $m2 = ${m1 > m2}")
     println(s"$m1 * 5 = ${m1 * 5}")
     println
+  }
+
+  def exercise05_htmlTable() {
+    println("EXERCISE 5: HTML table")
+
+    val html = Table() | "Java" | "Scala" || "Gosling" | "Odersky" || "JVM" | "JVM, .NET"
+    println(html)
+    println
+
   }
 }
