@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter11
 
-import com.czeczotka.scala.impatient.chapter11.exercise.{Table, Fraction, Money}
+import com.czeczotka.scala.impatient.chapter11.exercise.{AsciiArt, Table, Fraction, Money}
 
 object Operators {
 
@@ -11,8 +11,8 @@ object Operators {
     exercise03_fraction()
     exercise04_money()
     exercise05_htmlTable()
+    exercise06_asciiArt()
   }
-
 
   def exercise01_precedence() = {
     println("EXERCISE 1: Precedence rules")
@@ -26,6 +26,7 @@ object Operators {
     "so are evaluated left to right")
     println
   }
+
 
   def exercise02_pow() {
     // because ^ is used as a binary XOR bitwise operator like in Java
@@ -69,4 +70,32 @@ object Operators {
     println(html)
     println
   }
+
+  def exercise06_asciiArt() = {
+    println("EXERCISE 6: ASCII Art")
+
+    val a1 = AsciiArt(
+      """
+       /\_/\
+      ( ' ' )
+      (  -  )
+       | | |
+      (__|__)
+      """)
+
+    val a2 = AsciiArt(
+      """
+      -----
+    / Hello \
+   <  Scala |
+    \ Coder /
+      -----
+      """.stripMargin)
+
+    println(a1)
+    println(a2)
+    println(a1 + a2)
+    println
+  }
+
 }
