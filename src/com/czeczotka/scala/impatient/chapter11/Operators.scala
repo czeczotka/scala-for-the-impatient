@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter11
 
-import com.czeczotka.scala.impatient.chapter11.exercise.{AsciiArt, Table, Fraction, Money}
+import com.czeczotka.scala.impatient.chapter11.exercise.{RichFile, AsciiArt, Table, Fraction, Money}
 
 object Operators {
 
@@ -12,6 +12,7 @@ object Operators {
     exercise04_money()
     exercise05_htmlTable()
     exercise06_asciiArt()
+    exercise09_richFileUnapply()
   }
 
   def exercise01_precedence() = {
@@ -27,10 +28,10 @@ object Operators {
     println
   }
 
-
   def exercise02_pow() {
     // because ^ is used as a binary XOR bitwise operator like in Java
   }
+
 
   def exercise03_fraction() {
     println("EXERCISE 3: Fraction class")
@@ -96,6 +97,17 @@ object Operators {
     println(a2)
     println(a1 + a2)
     println
+  }
+
+  def exercise09_richFileUnapply() {
+    val fileName = "/home/jakub/readme.txt"
+    val file = RichFile(fileName)
+    val RichFile(path, name, extension) = file
+
+    println("EXERCISE 9: RichFile unapply")
+    println(s"File: $fileName, path: $path, name: $name, extension: $extension")
+    println
+
   }
 
 }
