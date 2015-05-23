@@ -68,6 +68,5 @@ object Operators {
     val html = Table() | "Java" | "Scala" || "Gosling" | "Odersky" || "JVM" | "JVM, .NET"
     println(html)
     println
-
   }
 }
