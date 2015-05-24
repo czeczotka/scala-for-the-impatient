@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter11
 
-import com.czeczotka.scala.impatient.chapter11.exercise.{RicherFile, RichFile, AsciiArt, Table, Fraction, Money}
+import com.czeczotka.scala.impatient.chapter11.exercise.{SquareMatrix, RicherFile, RichFile, AsciiArt, Table, Fraction, Money}
 
 object Operators {
 
@@ -12,6 +12,7 @@ object Operators {
     exercise04_money()
     exercise05_htmlTable()
     exercise06_asciiArt()
+    exercise08_matrix()
     exercise09_richFileUnapply()
     exercise10_richFileUnapplySeq()
   }
@@ -47,7 +48,6 @@ object Operators {
     println
   }
 
-
   def exercise04_money() {
     println("EXERCISE 4: Money class")
 
@@ -64,6 +64,7 @@ object Operators {
     println(s"$m1 * 5 = ${m1 * 5}")
     println
   }
+
 
   def exercise05_htmlTable() {
     println("EXERCISE 5: HTML table")
@@ -97,6 +98,37 @@ object Operators {
     println(a1)
     println(a2)
     println(a1 + a2)
+    println
+  }
+
+  def exercise08_matrix() {
+    println("EXERCISE 8: Matrix")
+    val m1 = SquareMatrix(3)
+    m1(0, 0) = 1
+    m1(0, 1) = 2
+    m1(0, 2) = 3
+    m1(1, 0) = 4
+    m1(1, 1) = 5
+    m1(1, 2) = 6
+    m1(2, 0) = 7
+    m1(2, 1) = 8
+    m1(2, 2) = 9
+    println("Matrix:")
+    println(m1)
+
+    val m1doubled = m1 * 2
+    println("Matrix doubled:")
+    println(m1doubled)
+    println
+
+    val m1multipliedAndDoubled = m1 * m1doubled
+    println("Matrix multiplied and doubled:")
+    println(m1multipliedAndDoubled)
+    println
+
+    val m1AddedAndDoubled = m1 + m1doubled
+    println("Matrix added and doubled:")
+    println(m1AddedAndDoubled)
     println
   }
 
