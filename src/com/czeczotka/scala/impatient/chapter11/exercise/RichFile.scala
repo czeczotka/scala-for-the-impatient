@@ -18,4 +18,10 @@ object RichFile {
   }
 }
 
+object RicherFile {
+  def unapplySeq(file: RichFile): Option[Seq[String]] = {
+    if (file.fullPath.trim.length == 0) None
+    else Some(file.fullPath.trim.split("/").filter(_.length > 0))
+  }
+}
 
