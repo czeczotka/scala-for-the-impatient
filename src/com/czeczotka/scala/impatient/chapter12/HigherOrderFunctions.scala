@@ -1,7 +1,5 @@
 package com.czeczotka.scala.impatient.chapter12
 
-import scala.collection.immutable.Range.Inclusive
-
 object HigherOrderFunctions {
 
   def main(args: Array[String]) {
@@ -10,6 +8,7 @@ object HigherOrderFunctions {
     exercise03_factorialReduceLeft()
     exercise04_factorialFoldLeft()
     exercise05_largest()
+    exercise06_largest()
   }
 
   def exercise01_values() = {
@@ -55,8 +54,20 @@ object HigherOrderFunctions {
     println
   }
 
-  def largest(fun: (Int) => Int, inclusive: Seq[Int]): Int = {
-    inclusive.map(fun(_)).max
+  def exercise06_largest() {
+    println("EXERCISE 6: largest at")
+
+    val largestValue = largestAt((x: Int) => 10 * x - x * x, 1 to 10)
+    println(s"Largest function value is at $largestValue")
+    println
+  }
+
+  def largestAt(fun: (Int) => Int, sequence: Seq[Int]): Int = {
+    sequence(sequence.indexWhere(fun(_) == sequence.map(fun(_)).max))
+  }
+
+  def largest(fun: (Int) => Int, sequence: Seq[Int]): Int = {
+    sequence.map(fun(_)).max
   }
 
   def factorialFoldLeft(number: Int) = {
