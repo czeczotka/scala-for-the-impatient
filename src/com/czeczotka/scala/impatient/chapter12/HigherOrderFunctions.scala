@@ -5,6 +5,7 @@ object HigherOrderFunctions {
   def main(args: Array[String]) {
     exercise01_values()
     exercise02_reduceLeft()
+    exercise03_factorial()
   }
 
   def exercise01_values() = {
@@ -12,7 +13,8 @@ object HigherOrderFunctions {
 
     val myValues = values((x: Int) => x * x, -5, 5)
     myValues.foreach(print)
-    println()
+    println
+    println
   }
 
   def exercise02_reduceLeft() {
@@ -23,6 +25,18 @@ object HigherOrderFunctions {
 
     println(s"The largest element in ${array.toBuffer} is $largest")
     println
+  }
+
+  def exercise03_factorial() {
+    println("EXERCISE 3: factorial using 'to' and 'reduceLeft'")
+
+    val number = 6
+    println(s"Factorial of $number is ${factorial(number)}")
+    println
+  }
+
+  def factorial(number: Int) = {
+    (1 to number).reduceLeft(_ * _)
   }
 
   def values(fun: (Int) => Int, low: Int, high: Int): Seq[(Int, Int)] = {
