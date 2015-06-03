@@ -5,7 +5,8 @@ object HigherOrderFunctions {
   def main(args: Array[String]) {
     exercise01_values()
     exercise02_reduceLeft()
-    exercise03_factorial()
+    exercise03_factorialReduceLeft()
+    exercise04_factorialFoldLeft()
   }
 
   def exercise01_values() = {
@@ -27,15 +28,27 @@ object HigherOrderFunctions {
     println
   }
 
-  def exercise03_factorial() {
+  def exercise03_factorialReduceLeft() {
     println("EXERCISE 3: factorial using 'to' and 'reduceLeft'")
 
     val number = 1
-    println(s"Factorial of $number is ${factorial(number)}")
+    println(s"Factorial of $number is ${factorialReduceLeft(number)}")
     println
   }
 
-  def factorial(number: Int) = {
+  def exercise04_factorialFoldLeft() {
+    println("EXERCISE 3: factorial using 'to' and 'foldLeft'")
+
+    val number = -1
+    println(s"Factorial of $number is ${factorialFoldLeft(number)}")
+    println
+  }
+
+  def factorialFoldLeft(number: Int) = {
+    (1 to number).foldLeft(1)(_ * _)
+  }
+
+  def factorialReduceLeft(number: Int) = {
     if (number < 1) 1
     else (1 to number).reduceLeft(_ * _)
   }
