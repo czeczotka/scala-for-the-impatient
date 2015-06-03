@@ -30,13 +30,14 @@ object HigherOrderFunctions {
   def exercise03_factorial() {
     println("EXERCISE 3: factorial using 'to' and 'reduceLeft'")
 
-    val number = 6
+    val number = 1
     println(s"Factorial of $number is ${factorial(number)}")
     println
   }
 
   def factorial(number: Int) = {
-    (1 to number).reduceLeft(_ * _)
+    if (number < 1) 1
+    else (1 to number).reduceLeft(_ * _)
   }
 
   def values(fun: (Int) => Int, low: Int, high: Int): Seq[(Int, Int)] = {
