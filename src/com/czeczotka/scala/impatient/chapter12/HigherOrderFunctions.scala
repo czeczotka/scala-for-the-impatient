@@ -11,6 +11,7 @@ object HigherOrderFunctions {
     exercise06_largest()
     exercise07_pairs()
     exercise08_corresponds()
+    exercise10_unless()
   }
 
   def exercise01_values() = {
@@ -85,6 +86,23 @@ object HigherOrderFunctions {
     val d = Array(5, 5, 1, 2, 3, 4, 5)
     println("Corresponds " + c.corresponds(d)(_.length == _))
     println()
+  }
+
+  def exercise10_unless() {
+    println("EXERCISE 10: unless")
+
+    // the first parameter is call-by-name so that it's not evaluated as the function is called
+    // we need currying to get this pretty syntax instead of unless(1 < 0, println("..."))
+
+    unless(1 < 0) {
+      println("Inside unless")
+    }
+  }
+
+  def unless(condition: => Boolean)(block: => Unit) {
+    if (!condition) {
+      block
+    }
   }
 
   def adjustToPair(fun: (Int, Int) => Int): ((Int, Int)) => Int = {
