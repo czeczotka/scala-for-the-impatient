@@ -10,6 +10,7 @@ object HigherOrderFunctions {
     exercise05_largest()
     exercise06_largest()
     exercise07_pairs()
+    exercise08_corresponds()
   }
 
   def exercise01_values() = {
@@ -70,6 +71,19 @@ object HigherOrderFunctions {
     println("All pairs: "      + pairs.mkString(" "))
     println("Multiply pairs: " + pairs.map(adjustToPair(_ * _)).mkString(", "))
     println("Adjust to pair: " + adjustToPair(_ * _)((6, 7)))
+    println()
+  }
+
+  def exercise08_corresponds() {
+    println("EXERCISE 8: corresponds")
+
+    val a = Array("Hello", "World")
+    val b = Array("hello", "world")
+    println("Corresponds " + a.corresponds(b)(_.equalsIgnoreCase(_)))
+
+    val c = Array("Hello", "World", "a", "bb", "ccc", "dddd", "eeeee")
+    val d = Array(5, 5, 1, 2, 3, 4, 5)
+    println("Corresponds " + c.corresponds(d)(_.length == _))
     println()
   }
 
