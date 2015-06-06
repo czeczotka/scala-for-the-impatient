@@ -9,6 +9,7 @@ object HigherOrderFunctions {
     exercise04_factorialFoldLeft()
     exercise05_largest()
     exercise06_largest()
+    exercise07_pairs()
   }
 
   def exercise01_values() = {
@@ -57,9 +58,23 @@ object HigherOrderFunctions {
   def exercise06_largest() {
     println("EXERCISE 6: largest at")
 
-    val largestValue = largestAt((x: Int) => 10 * x - x * x, 1 to 10)
-    println(s"Largest function value is at $largestValue")
+    val largestInput = largestAt((x: Int) => 10 * x - x * x, 1 to 10)
+    println(s"Largest function value is at input $largestInput")
     println
+  }
+
+  def exercise07_pairs() {
+    println("EXERCISE 7: pairs ")
+
+    val pairs = (1 to 10) zip (11 to 20)
+    println("All pairs: "      + pairs.mkString(" "))
+    println("Multiply pairs: " + pairs.map(adjustToPair(_ * _)).mkString(", "))
+    println("Adjust to pair: " + adjustToPair(_ * _)((6, 7)))
+    println()
+  }
+
+  def adjustToPair(fun: (Int, Int) => Int): ((Int, Int)) => Int = {
+    (pair: (Int, Int)) => fun(pair._1, pair._2)
   }
 
   def largestAt(fun: (Int) => Int, sequence: Seq[Int]): Int = {
