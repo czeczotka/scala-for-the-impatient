@@ -1,12 +1,14 @@
 package com.czeczotka.scala.impatient.chapter13
 
 import scala.collection.mutable
+import scala.collection.mutable.LinkedList
 
 object Collections {
 
   def main(args: Array[String]) {
     exercise01_indexes()
     exercise02_indexesWithImmutableMap()
+    exercise03_removeAllZeros()
   }
 
   def exercise01_indexes() {
@@ -19,6 +21,24 @@ object Collections {
     println("EXERCISE 2: indexes with immutable map")
     println(indexesWithImmutableMap("Mississippi"))
     println()
+  }
+
+  def exercise03_removeAllZeros() {
+    println("EXERCISE 3: remove all zeros from a linked list of integers")
+
+    val list = mutable.LinkedList(2, 4, 0, -5, -1, 8, 0, 0, 5)
+    println("List with zeros:        " + list)
+    println("List without zeros:     " + removeZeros(list))
+    println()
+  }
+
+  def removeZeros(list: LinkedList[Int]): LinkedList[Int] = {
+    if (list == mutable.LinkedList.empty)
+      mutable.LinkedList.empty
+    else if (list.elem == 0)
+      removeZeros(list.next)
+    else
+      list.elem +: removeZeros(list.next)
   }
 
   def indexesWithImmutableMap(string: String): Map[Char, List[Int]] = {
