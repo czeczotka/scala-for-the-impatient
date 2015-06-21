@@ -1,7 +1,7 @@
 package com.czeczotka.scala.impatient.chapter13
 
 import scala.collection.mutable
-import scala.collection.mutable.LinkedList
+import scala.collection.mutable.{ArrayBuffer, LinkedList}
 
 object Collections {
 
@@ -9,6 +9,7 @@ object Collections {
     exercise01_indexes()
     exercise02_indexesWithImmutableMap()
     exercise03_removeAllZeros()
+    exercise04_collectionOfStrings()
   }
 
   def exercise01_indexes() {
@@ -29,6 +30,15 @@ object Collections {
     val list = mutable.LinkedList(2, 4, 0, -5, -1, 8, 0, 0, 5)
     println("List with zeros:        " + list)
     println("List without zeros:     " + removeZeros(list))
+    println()
+  }
+
+  def exercise04_collectionOfStrings() {
+    val strings = Array("Tom", "Fred", "Harry")
+    val stringsToInts = Map("Tom" -> 3, "Dick" -> 4, "Harry" -> 5)
+
+    println("EXERCISE 4: collection of strings")
+    println(strings.flatMap(stringsToInts.get).toBuffer)
     println()
   }
 
