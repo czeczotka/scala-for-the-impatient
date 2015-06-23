@@ -11,6 +11,7 @@ object Collections {
     exercise03_removeAllZeros()
     exercise04_collectionOfStrings()
     exercise05_mkString()
+    exercise06_listOfIntegers()
   }
 
   def exercise01_indexes() {
@@ -49,6 +50,24 @@ object Collections {
     val array = ArrayBuffer("m", "a", "k", "e", "S", "t", "r", "i", "n", "g")
     println("Array:    " + array)
     println("mkString: " + mkString(array))
+    println()
+  }
+
+  def exercise06_listOfIntegers() = {
+    println("EXERCISE 6: folding a list of integers")
+
+    val list = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    println("List:    " + list)
+
+    // this is equivalent to list.foldRight(List[Int]()(_ :: _))
+    // which would add all elements of the list to an empty list, right to left
+    println("         " + (list :\ List[Int]())(_ :: _))
+
+    // this is equivalent to list.foldLeft(List[Int]()(_ :+ _))
+    // which would add all elements of the list to an empty list, left to right
+    println("         " + (List[Int]() /: list)(_ :+ _))
+
+    println("Reverse: " + (List[Int]() /: list)((left, right) => right :: left))
     println()
   }
 
