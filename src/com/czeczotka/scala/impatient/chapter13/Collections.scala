@@ -10,6 +10,7 @@ object Collections {
     exercise02_indexesWithImmutableMap()
     exercise03_removeAllZeros()
     exercise04_collectionOfStrings()
+    exercise05_mkString()
   }
 
   def exercise01_indexes() {
@@ -40,6 +41,19 @@ object Collections {
     println("EXERCISE 4: collection of strings")
     println(strings.flatMap(stringsToInts.get).toBuffer)
     println()
+  }
+
+  def exercise05_mkString() {
+    println("EXERCISE 5: mkString")
+
+    val array = ArrayBuffer("m", "a", "k", "e", "S", "t", "r", "i", "n", "g")
+    println("Array:    " + array)
+    println("mkString: " + mkString(array))
+    println()
+  }
+
+  def mkString(seq: Seq[String]) = {
+    seq.reduceLeft(_ + _)
   }
 
   def removeZeros(list: LinkedList[Int]): LinkedList[Int] = {
