@@ -12,6 +12,7 @@ object Collections {
     exercise04_collectionOfStrings()
     exercise05_mkString()
     exercise06_listOfIntegers()
+    exercise07_zipping()
   }
 
   def exercise01_indexes() {
@@ -68,6 +69,26 @@ object Collections {
     println("         " + (List[Int]() /: list)(_ :+ _))
 
     println("Reverse: " + (List[Int]() /: list)((left, right) => right :: left))
+    println()
+  }
+
+  def exercise07_zipping() {
+    println("EXERCISE 7: zipping")
+
+    val prices = List(5.0, 20.0, 9.95)
+    val quantities = List(10, 2, 1)
+
+    def m(x: Double, y: Int) = x * y
+    def multiply = m _
+
+    val list: List[(Double, Int)] = prices zip quantities
+    val listOfPrices = list map { p => p._1 * p._2 }
+    val listOfPricesTupled = list.map(multiply.tupled(_))
+
+    println("List:                      " + list)
+    println("List of prices:            " + listOfPrices)
+    println("List of prices tupled:     " + listOfPricesTupled)
+    println("Total price:               " + listOfPrices.sum)
     println()
   }
 
