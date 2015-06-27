@@ -13,6 +13,7 @@ object Collections {
     exercise05_mkString()
     exercise06_listOfIntegers()
     exercise07_zipping()
+    exercise08_grouped()
   }
 
   def exercise01_indexes() {
@@ -90,6 +91,16 @@ object Collections {
     println("List of prices tupled:     " + listOfPricesTupled)
     println("Total price:               " + listOfPrices.sum)
     println()
+  }
+
+  def exercise08_grouped() {
+    println("EXERCISE 8: grouped")
+
+    val array = ArrayBuffer(1, 2, 3, 4, 5, 6)
+    val columns = array.size / 2
+
+    println(s"array:           ${array}")
+    println(s"array grouped:   ${array.grouped(columns).mkString("ArrayBuffer(", ", ", ")")}")
   }
 
   def mkString(seq: Seq[String]) = {
