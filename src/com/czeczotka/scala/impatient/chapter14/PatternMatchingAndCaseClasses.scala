@@ -52,7 +52,7 @@ object PatternMatchingAndCaseClasses {
 
   def price(item: Item): Double = item match {
     case Article(_, p) => p
-    case Bundle(_, discount, items @ _*) => items.map(price _).sum - discount
+    case Bundle(_, discount, items @ _*) => items.map(price).sum - discount
     case Multiple(amount, it) => amount * price(it)
   }
 
