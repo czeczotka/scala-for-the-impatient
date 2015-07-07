@@ -84,7 +84,7 @@ object Collections {
 
     val list: List[(Double, Int)] = prices zip quantities
     val listOfPrices = list map { p => p._1 * p._2 }
-    val listOfPricesTupled = list.map(multiply.tupled(_))
+    val listOfPricesTupled = list.map(multiply.tupled)
 
     println("List:                      " + list)
     println("List of prices:            " + listOfPrices)
