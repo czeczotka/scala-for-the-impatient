@@ -9,6 +9,7 @@ object PatternMatchingAndCaseClasses {
     exercise02_swap()
     exercise03_swapArray()
     exercise04_itemClass()
+    exercise05_leafSum()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -48,6 +49,29 @@ object PatternMatchingAndCaseClasses {
     println("EXERCISE 4: Multiple as a subclass of the Item class")
     println(f"Items price ${price(item)}%2.2f")
     println()
+  }
+
+  def exercise05_leafSum() {
+    def printLine(list: List[Any]) {
+      println(s"leafSum(${list.mkString(",")}) = ${leafSum(list)}")
+    }
+
+    println("EXERCISE 5: Leaf sum")
+    printLine(List(List(3, 8), 2, List(5)))
+    printLine(Nil)
+    printLine(List())
+    printLine(List(1))
+    printLine(List(1, 2, 3))
+    printLine(List(List(List(1, 2, 3))))
+    println()
+  }
+
+  def leafSum(list: List[Any]): Int = {
+    list match {
+      case (x: Int) :: xs => x + leafSum(xs)
+      case (x: List[Any]) :: xs => leafSum(x) + leafSum(xs)
+      case _ => 0
+    }
   }
 
   def price(item: Item): Double = item match {
