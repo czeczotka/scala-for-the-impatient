@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter14
 
-import com.czeczotka.scala.impatient.chapter14.exercise.{Multiple, Bundle, Article, Item}
+import com.czeczotka.scala.impatient.chapter14.exercise.{Node, Leaf, BinaryTree, Multiple, Bundle, Article, Item}
 
 object PatternMatchingAndCaseClasses {
 
@@ -10,6 +10,7 @@ object PatternMatchingAndCaseClasses {
     exercise03_swapArray()
     exercise04_itemClass()
     exercise05_leafSum()
+    exercise06_binaryTree()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -55,7 +56,6 @@ object PatternMatchingAndCaseClasses {
     def printLine(list: List[Any]) {
       println(s"leafSum(${list.mkString(",")}) = ${leafSum(list)}")
     }
-
     println("EXERCISE 5: Leaf sum")
     printLine(List(List(3, 8), 2, List(5)))
     printLine(Nil)
@@ -64,6 +64,24 @@ object PatternMatchingAndCaseClasses {
     printLine(List(1, 2, 3))
     printLine(List(List(List(1, 2, 3))))
     println()
+  }
+
+  def exercise06_binaryTree() {
+    def printLine(tree: BinaryTree) {
+      println(s"leafSumBinaryTree(${tree.toString}) = ${leafSumBinaryTree(tree)}")
+    }
+    println("EXERCISE 5: Leaf sum BinaryTree")
+    printLine(Leaf(5))
+    printLine(Node(Leaf(5), Node(Leaf(2), Leaf(7))))
+    printLine(Node(Leaf(5), Node(Leaf(1), Node(Leaf(2), Node(Leaf(3), Leaf(7))))))
+    println()
+  }
+
+  def leafSumBinaryTree(tree: BinaryTree): Int = {
+    tree match {
+      case l: Leaf => l.value
+      case n: Node => leafSumBinaryTree(n.left) + leafSumBinaryTree(n.right)
+    }
   }
 
   def leafSum(list: List[Any]): Int = {
