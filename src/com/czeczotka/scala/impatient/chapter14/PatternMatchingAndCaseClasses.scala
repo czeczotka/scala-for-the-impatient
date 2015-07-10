@@ -1,7 +1,6 @@
 package com.czeczotka.scala.impatient.chapter14
 
-import com.czeczotka.scala.impatient.chapter14.exercise.{BinaryTree, Node, Leaf, Multiple, Bundle, Article, Item}
-import com.czeczotka.scala.impatient.chapter14.exercise.{MultiTree, MNode, MLeaf}
+import com.czeczotka.scala.impatient.chapter14.exercise.{Divide, Multiply, Minus, Add, Value, Calculator, BinaryTree, Node, Leaf, Multiple, Bundle, Article, Item, MultiTree, MNode, MLeaf}
 
 object PatternMatchingAndCaseClasses {
 
@@ -13,6 +12,7 @@ object PatternMatchingAndCaseClasses {
     exercise05_leafSum()
     exercise06_binaryTree()
     exercise07_multiTree()
+    exercise08_calculator()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -89,6 +89,22 @@ object PatternMatchingAndCaseClasses {
     printLine(MNode(MLeaf(5), MNode(MLeaf(1), MNode(MLeaf(2), MNode(MLeaf(3), MLeaf(7))))))
     printLine(MNode(MNode(MLeaf(3), MLeaf(8)), MLeaf(2), MNode(MLeaf(5))))
     println()
+  }
+
+  def exercise08_calculator() {
+    def printLine(tree: Calculator) {
+      println(s"leafSumCalculator(${tree.toString}) = ${leafSumCalculator(tree)}")
+    }
+    println("EXERCISE 8: Leaf sum for a Calculator")
+    printLine(Minus(5))
+    printLine(Multiply(Value(5), Add(Value(2), Value(7), Value(1), Value(4))))
+    printLine(Add(Minus(5), Divide(1, 2)))
+    printLine(Add(Multiply(Value(3), Value(8)), Value(2), Minus(5)))
+    println()
+  }
+
+  def leafSumCalculator(tree: Calculator): Double = {
+    tree.calculate
   }
 
   def leafSumMultiTree(tree: MultiTree): Int = {
