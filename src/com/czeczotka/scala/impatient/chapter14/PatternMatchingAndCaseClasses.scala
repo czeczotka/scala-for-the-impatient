@@ -1,6 +1,7 @@
 package com.czeczotka.scala.impatient.chapter14
 
-import com.czeczotka.scala.impatient.chapter14.exercise.{Node, Leaf, BinaryTree, Multiple, Bundle, Article, Item}
+import com.czeczotka.scala.impatient.chapter14.exercise.{BinaryTree, Node, Leaf, Multiple, Bundle, Article, Item}
+import com.czeczotka.scala.impatient.chapter14.exercise.{MultiTree, MNode, MLeaf}
 
 object PatternMatchingAndCaseClasses {
 
@@ -11,6 +12,7 @@ object PatternMatchingAndCaseClasses {
     exercise04_itemClass()
     exercise05_leafSum()
     exercise06_binaryTree()
+    exercise07_multiTree()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -70,17 +72,36 @@ object PatternMatchingAndCaseClasses {
     def printLine(tree: BinaryTree) {
       println(s"leafSumBinaryTree(${tree.toString}) = ${leafSumBinaryTree(tree)}")
     }
-    println("EXERCISE 5: Leaf sum BinaryTree")
+    println("EXERCISE 6: Leaf sum BinaryTree")
     printLine(Leaf(5))
     printLine(Node(Leaf(5), Node(Leaf(2), Leaf(7))))
     printLine(Node(Leaf(5), Node(Leaf(1), Node(Leaf(2), Node(Leaf(3), Leaf(7))))))
     println()
   }
 
+  def exercise07_multiTree() {
+    def printLine(tree: MultiTree) {
+      println(s"leafSumMultiTree(${tree.toString}) = ${leafSumMultiTree(tree)}")
+    }
+    println("EXERCISE 7: Leaf sum MultiTree")
+    printLine(MLeaf(5))
+    printLine(MNode(MLeaf(5), MNode(MLeaf(2), MLeaf(7), MLeaf(1), MLeaf(4))))
+    printLine(MNode(MLeaf(5), MNode(MLeaf(1), MNode(MLeaf(2), MNode(MLeaf(3), MLeaf(7))))))
+    printLine(MNode(MNode(MLeaf(3), MLeaf(8)), MLeaf(2), MNode(MLeaf(5))))
+    println()
+  }
+
+  def leafSumMultiTree(tree: MultiTree): Int = {
+    tree match {
+      case leaf: MLeaf => leaf.value
+      case node: MNode => node.child.map(leafSumMultiTree).sum
+    }
+  }
+
   def leafSumBinaryTree(tree: BinaryTree): Int = {
     tree match {
-      case l: Leaf => l.value
-      case n: Node => leafSumBinaryTree(n.left) + leafSumBinaryTree(n.right)
+      case leaf: Leaf => leaf.value
+      case node: Node => leafSumBinaryTree(node.left) + leafSumBinaryTree(node.right)
     }
   }
 
