@@ -14,6 +14,7 @@ object PatternMatchingAndCaseClasses {
     exercise07_multiTree()
     exercise08_calculator()
     exercise09_sumOfOptions()
+    exercise10_compose()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -116,6 +117,23 @@ object PatternMatchingAndCaseClasses {
     printLine(List())
     println()
   }
+
+  def exercise10_compose() {
+    def f(x: Double) = if (x >= 0) Some(math.sqrt(x)) else None
+    def g(x: Double) = if (x != 1) Some(1 / (x - 1)) else None
+    val h = compose(f, g)
+
+    println("EXERCISE 10: Compose two functions")
+    println(s"h(2) = ${h(2)}")
+    println(s"h(1) = ${h(1)}")
+    println(s"h(0) = ${h(0)}")
+  }
+
+  def compose(f: (Double) => Option[Double], g: (Double) => Option[Double]): (Double) => Option[Double] =
+    (x: Double) => g(x) match {
+      case (Some(gx)) => f(gx)
+      case None => None
+    }
 
   def listSum(list: List[Option[Int]]): Int = list.map(_.getOrElse(0)).sum
 
