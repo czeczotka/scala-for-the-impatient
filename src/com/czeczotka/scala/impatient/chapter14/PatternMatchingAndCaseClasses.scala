@@ -13,6 +13,7 @@ object PatternMatchingAndCaseClasses {
     exercise06_binaryTree()
     exercise07_multiTree()
     exercise08_calculator()
+    exercise09_sumOfOptions()
   }
 
   def exercise01_jdkFallsThrough() {
@@ -102,6 +103,21 @@ object PatternMatchingAndCaseClasses {
     printLine(Add(Multiply(Value(3), Value(8)), Value(2), Minus(5)))
     println()
   }
+
+  def exercise09_sumOfOptions() {
+    def printLine(list: List[Option[Int]]) {
+      println(s"listSum($list) = ${listSum(list)}")
+    }
+    println("EXERCISE 9: Compute the sum of non-None values in a List[Option[Int]]")
+    printLine(List(Some(1), None, Some(2)))
+    printLine(List(Some(1), Some(2), Some(3), Some(4), Some(5)))
+    printLine(List(None))
+    printLine(List(None, None, None))
+    printLine(List())
+    println()
+  }
+
+  def listSum(list: List[Option[Int]]): Int = list.map(_.getOrElse(0)).sum
 
   def leafSumCalculator(tree: Calculator): Double = {
     tree.calculate
