@@ -6,4 +6,7 @@ public class MyJavaClass {
         return Util.sum(1, 2, 3, 4, 5);
     }
 
+    public String fileContent(String filepath) {
+        return Util.fileContent(filepath);
+    }
 }
