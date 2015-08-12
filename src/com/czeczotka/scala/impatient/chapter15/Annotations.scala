@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter15
 
-import com.czeczotka.scala.impatient.chapter15.exercise.MyJavaClass
+import com.czeczotka.scala.impatient.chapter15.exercise.{AllDifferent, MyJavaClass}
 
 object Annotations {
 
@@ -14,6 +14,7 @@ object Annotations {
     exercise02_deprecated()
     exercise04_sum()
     exercise05_string()
+    exercise07_allDifferent()
   }
 
   def exercise01_junitTests() {
@@ -38,6 +39,40 @@ object Annotations {
     
     println("EXERCISE 5: Call string processing Scala function from Java")
     println(fileContent)
+    println()
+  }
+
+  def exercise07_allDifferent() {
+    /*
+      AllDifferent without the @specialized annotation inspected with the Java class file disassembler:
+      $ javap AllDifferent.class
+      Compiled from "AllDifferent.scala"
+      public class com.czeczotka.scala.impatient.chapter15.exercise.AllDifferent {
+        public <T> boolean allDifferent(T, T, T);
+        public com.czeczotka.scala.impatient.chapter15.exercise.AllDifferent();
+      }
+
+      AllDifferent with the @specialized annotation inspected with the Java class file disassembler,
+      we can see methods for all primitive types were generated:
+      $ javap AllDifferent.class
+        Compiled from "AllDifferent.scala"
+        public class com.czeczotka.scala.impatient.chapter15.exercise.AllDifferent {
+          public <T> boolean allDifferent(T, T, T);
+          public boolean allDifferent$mZc$sp(boolean, boolean, boolean);
+          public boolean allDifferent$mBc$sp(byte, byte, byte);
+          public boolean allDifferent$mCc$sp(char, char, char);
+          public boolean allDifferent$mDc$sp(double, double, double);
+          public boolean allDifferent$mFc$sp(float, float, float);
+          public boolean allDifferent$mIc$sp(int, int, int);
+          public boolean allDifferent$mJc$sp(long, long, long);
+          public boolean allDifferent$mSc$sp(short, short, short);
+          public boolean allDifferent$mVc$sp(scala.runtime.BoxedUnit, scala.runtime.BoxedUnit, scala.runtime.BoxedUnit);
+          public com.czeczotka.scala.impatient.chapter15.exercise.AllDifferent();
+        }
+     */
+    val ad = new AllDifferent()
+    println("EXERCISE 7: Use @specialized annotation to generate methods for primitive types")
+    println(s"allDifferent = ${ad.allDifferent(1, 2, 3)}")
     println()
   }
 }
