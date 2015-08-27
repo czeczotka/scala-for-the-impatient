@@ -14,7 +14,7 @@ object Annotations {
     exercise02_deprecated()
     exercise04_sum()
     exercise05_string()
-    exercise07_allDifferent()
+    exercise08_allDifferent()
   }
 
   def exercise01_junitTests() {
@@ -42,7 +42,7 @@ object Annotations {
     println()
   }
 
-  def exercise07_allDifferent() {
+  def exercise08_allDifferent() {
     /*
       AllDifferent without the @specialized annotation inspected with the Java class file disassembler:
       $ javap AllDifferent.class
