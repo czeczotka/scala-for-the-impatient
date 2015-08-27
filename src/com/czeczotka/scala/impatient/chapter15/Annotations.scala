@@ -15,6 +15,7 @@ object Annotations {
     exercise04_sum()
     exercise05_string()
     exercise08_allDifferent()
+    exercise09_rangeForeach()
   }
 
   def exercise01_junitTests() {
@@ -74,5 +75,25 @@ object Annotations {
     println("EXERCISE 7: Use @specialized annotation to generate methods for primitive types")
     println(s"allDifferent = ${ad.allDifferent(1, 2, 3)}")
     println()
+  }
+
+  def exercise09_rangeForeach() {
+    println("EXERCISE 9: Range.foreach method")
+    (1 to 10).foreach(print)
+    println()
+  /*
+    $ javap -classpath scala-library.jar scala.collection.immutable.Range | grep foreach
+      public final <U> void foreach(scala.Function1<java.lang.Object, U>);
+      public final void foreach$mVc$sp(scala.Function1<java.lang.Object, scala.runtime.BoxedUnit>);
+
+    Range.foreach signature: @inline final override def foreach[@specialized(Unit) U](f: Int => U) { ... }
+
+    The foreach method will take a Function1 (a function with one parameter) which will be called
+    with the Range element. Function1 is annotated with @specialized itself so it will have all methods
+    generated for primitive types ($ javap -classpath scala-library.jar scala.Function1).
+
+    [@specialized(Unit) U] causes generation of the other foreach method which works for Function1 that
+    have no return value (void) such as println.
+   */
   }
 }
