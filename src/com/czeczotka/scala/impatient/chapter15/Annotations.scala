@@ -14,6 +14,7 @@ object Annotations {
     exercise02_deprecated()
     exercise04_sum()
     exercise05_string()
+    exercise06_tailrecFail()
     exercise08_allDifferent()
     exercise09_rangeForeach()
     exercise10_assert()
@@ -42,6 +43,22 @@ object Annotations {
     println("EXERCISE 5: Call string processing Scala function from Java")
     println(fileContent)
     println()
+  }
+
+  def exercise06_tailrecFail() {
+
+    class SuperClass {
+      // @tailrec generates - Error:(52, 20) could not optimize @tailrec annotated method sum: it is neither private nor final so can be overridden
+      def sum(xs: Seq[Int], partial: BigInt): BigInt = if (xs.isEmpty) partial else sum(xs.tail, xs.head + partial)
+    }
+
+    class SubClass extends SuperClass {
+      def sum(xs: Seq[Int]): BigInt = if (xs.isEmpty) 0 else xs.head + sum(xs.tail)
+    }
+
+    println("EXERCISE 6: Not tail recursion optimization when a method can be overridden")
+    println()
+
   }
 
   def exercise08_allDifferent() {
