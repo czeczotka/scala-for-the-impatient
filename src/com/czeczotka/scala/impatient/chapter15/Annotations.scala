@@ -14,7 +14,7 @@ object Annotations {
     exercise02_deprecated()
     exercise04_sum()
     exercise05_string()
-    exercise06_tailrecFail()
+    exercise07_tailrecFail()
     exercise08_allDifferent()
     exercise09_rangeForeach()
     exercise10_assert()
@@ -45,7 +45,7 @@ object Annotations {
     println()
   }
 
-  def exercise06_tailrecFail() {
+  def exercise07_tailrecFail() {
 
     class SuperClass {
       // @tailrec generates - Error:(52, 20) could not optimize @tailrec annotated method sum: it is neither private nor final so can be overridden
@@ -56,7 +56,7 @@ object Annotations {
       def sum(xs: Seq[Int]): BigInt = if (xs.isEmpty) 0 else xs.head + sum(xs.tail)
     }
 
-    println("EXERCISE 6: Not tail recursion optimization when a method can be overridden")
+    println("EXERCISE 7: No tail recursion optimization when a method can be overridden")
     println()
 
   }
@@ -90,7 +90,7 @@ object Annotations {
         }
      */
     val ad = new AllDifferent()
-    println("EXERCISE 7: Use @specialized annotation to generate methods for primitive types")
+    println("EXERCISE 8: Use @specialized annotation to generate methods for primitive types")
     println(s"allDifferent = ${ad.allDifferent(1, 2, 3)}")
     println()
   }
