@@ -1,6 +1,6 @@
 package com.czeczotka.scala.impatient.chapter15
 
-import com.czeczotka.scala.impatient.chapter15.exercise.{AllDifferent, MyJavaClass}
+import com.czeczotka.scala.impatient.chapter15.exercise.{Factorial, AllDifferent, MyJavaClass}
 
 object Annotations {
 
@@ -16,6 +16,7 @@ object Annotations {
     exercise05_string()
     exercise08_allDifferent()
     exercise09_rangeForeach()
+    exercise10_assert()
   }
 
   def exercise01_junitTests() {
@@ -81,6 +82,7 @@ object Annotations {
     println("EXERCISE 9: Range.foreach method")
     (1 to 10).foreach(print)
     println()
+    println()
   /*
     $ javap -classpath scala-library.jar scala.collection.immutable.Range | grep foreach
       public final <U> void foreach(scala.Function1<java.lang.Object, U>);
@@ -95,5 +97,81 @@ object Annotations {
     [@specialized(Unit) U] causes generation of the other foreach method which works for Function1 that
     have no return value (void) such as println.
    */
+  }
+
+  def exercise10_assert() {
+    def factorialLine(n: Int) = {
+      s"factorial($n) = ${Factorial.factorial(n)}"
+    }
+    println("EXERCISE 10: assert in factorial")
+    println(factorialLine(5))
+
+    /*
+     *  Assertions are enabled by default so the following code will result in an exception:
+     *  Exception in thread "main" java.lang.AssertionError: assertion failed
+     *      at scala.Predef$.assert(Predef.scala:151)
+     *      at com.czeczotka.scala.impatient.chapter15.exercise.Factorial$.factorial(Factorial.scala:15)
+     *      at com.czeczotka.scala.impatient.chapter15.Annotations$.factorialLine$1(Annotations.scala:104)
+     *      at com.czeczotka.scala.impatient.chapter15.Annotations$.exercise10_assert(Annotations.scala:108)
+     */
+    println(factorialLine(-1))
+    println()
+
+    /*
+
+ Using javap to see what happens when assertion is present:
+
+ $ javap -c Factorial\$.class
+ Compiled from "Factorial.scala"
+ public final class com.czeczotka.scala.impatient.chapter15.exercise.Factorial$ {
+  public static final com.czeczotka.scala.impatient.chapter15.exercise.Factorial$ MODULE$;
+
+  public static {};
+    Code:
+       0: new           #2                  // class com/czeczotka/scala/impatient/chapter15/exercise/Factorial$
+       3: invokespecial #12                 // Method "<init>":()V
+       6: return
+
+  public int factorial(int);
+    Code:
+       0: getstatic     #19                 // Field scala/Predef$.MODULE$:Lscala/Predef$;
+       3: iload_1
+       4: iconst_0
+       5: if_icmplt     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: invokevirtual #23                 // Method scala/Predef$.assert:(Z)V
+      16: aload_0
+      17: iload_1
+      18: iconst_1
+      19: invokespecial #27                 // Method go$1:(II)I
+      22: ireturn
+}
+
+ And what happens when assertion is commented out (they can be disabled at
+ compile-time with the -Xelide-below 2001 or -Xelide-below MAXIMUM flag)
+
+ $ javap -c Factorial\$.class
+ Compiled from "Factorial.scala"
+ public final class com.czeczotka.scala.impatient.chapter15.exercise.Factorial$ {
+   public static final com.czeczotka.scala.impatient.chapter15.exercise.Factorial$ MODULE$;
+
+   public static {};
+     Code:
+        0: new           #2                  // class com/czeczotka/scala/impatient/chapter15/exercise/Factorial$
+        3: invokespecial #12                 // Method "<init>":()V
+        6: return
+
+   public int factorial(int);
+     Code:
+        0: aload_0
+        1: iload_1
+        2: iconst_1
+        3: invokespecial #18                 // Method go$1:(II)I
+        6: ireturn
+}
+
+ */
   }
 }
