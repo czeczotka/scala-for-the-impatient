@@ -58,6 +58,7 @@ object TypeParameters {
     }
 
     println("EXERCISE 6: Return the middle element from a Iterable[T]")
+    println(line("World"))
     println(line(List("Howdy!")))
     println(line(List("Hello", "World")))
     println(line(Array(1, 22, 333, 4444)))
