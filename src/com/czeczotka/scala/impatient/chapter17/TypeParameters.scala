@@ -6,6 +6,7 @@ object TypeParameters {
     exercise01_pairSwap()
     exercise02_pairSwap()
     exercise03_pairSwap()
+    exercise06_middleElement()
   }
 
   def exercise01_pairSwap() {
@@ -45,6 +46,22 @@ object TypeParameters {
     val pair = new Pair(3, "three")
     println("EXERCISE 3: Pair swap for generic swap method")
     println(s"Pair: $pair, swapped: ${swap(pair)}")
+    println()
+  }
+
+  def exercise06_middleElement() {
+
+    def line[T](iterable: Iterable[T]): String = s"Iterable: $iterable, middle element: ${middle(iterable)}"
+
+    def middle[T](iterable: Iterable[T]): T = {
+      iterable.toSeq((iterable.size + 1)/ 2 - 1)
+    }
+
+    println("EXERCISE 6: Return the middle element from a Iterable[T]")
+    println(line(List("Howdy!")))
+    println(line(List("Hello", "World")))
+    println(line(Array(1, 22, 333, 4444)))
+    println(line(Array(1, 22, 333, 4444, 55555)))
     println()
   }
 }
