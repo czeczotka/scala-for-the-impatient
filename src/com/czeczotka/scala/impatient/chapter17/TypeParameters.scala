@@ -6,6 +6,7 @@ object TypeParameters {
     exercise01_pairSwap()
     exercise02_pairSwap()
     exercise03_pairSwap()
+    exercise04_replaceFirst()
     exercise06_middleElement()
   }
 
@@ -47,6 +48,26 @@ object TypeParameters {
     println("EXERCISE 3: Pair swap for generic swap method")
     println(s"Pair: $pair, swapped: ${swap(pair)}")
     println()
+  }
+
+  def exercise04_replaceFirst() {
+
+    class Person
+
+    class Student extends Person
+
+    class Pair[T](val first: T, val second: T) {
+      def replaceFirst[R >: T](newFirst: R) = new Pair[R](newFirst, second)
+    }
+
+    val pair1 = new Pair[Student](new Student, new Student)
+    val pair2 = pair1.replaceFirst[Person](new Person)
+
+    val pair3 = new Pair[Person](new Person, new Person)
+    val pair4 = pair3.replaceFirst[Person](new Student)
+
+    // we don't need the lower bound because Student extends Person so can be treated as an instance on Person
+    
   }
 
   def exercise06_middleElement() {
