@@ -7,6 +7,7 @@ object TypeParameters {
     exercise02_pairSwap()
     exercise03_pairSwap()
     exercise04_replaceFirst()
+    exercise05_richInt()
     exercise06_middleElement()
   }
 
@@ -68,6 +69,14 @@ object TypeParameters {
 
     // we don't need the lower bound because Student extends Person so can be treated as an instance on Person
     
+  }
+
+  def exercise05_richInt() {
+
+    // Int is a wrapper for Java's int so when you want to parametrize a class with [Int] you
+    // should use a view bound (<%) so that it can be implicitly converted to RichInt and
+    // RichInt's compareTo method is used to compare Ints
+
   }
 
   def exercise06_middleElement() {
