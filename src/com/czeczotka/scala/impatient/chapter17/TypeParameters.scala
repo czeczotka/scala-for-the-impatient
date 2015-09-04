@@ -9,6 +9,8 @@ object TypeParameters {
     exercise04_replaceFirst()
     exercise05_richInt()
     exercise06_middleElement()
+
+    exercise10_sameTypeParameters()
   }
 
   def exercise01_pairSwap() {
@@ -93,6 +95,24 @@ object TypeParameters {
     println(line(List("Hello", "World")))
     println(line(Array(1, 22, 333, 4444)))
     println(line(Array(1, 22, 333, 4444, 55555)))
+    println()
+  }
+
+  def exercise10_sameTypeParameters() {
+
+    case class Pair[S, T](var first: S, var second: T) {
+      def swap(implicit ev: S =:= T, ev2: T =:= S) {
+        val tmp = first
+        first = second
+        second = tmp
+      }
+    }
+
+    val pair = Pair(1, 123)
+    println("EXERCISE 10: Mutable Pair and same type parameters")
+    print(s"$pair ")
+    pair.swap
+    println(s"swapped $pair")
     println()
   }
 }
