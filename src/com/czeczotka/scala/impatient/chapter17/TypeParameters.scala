@@ -1,5 +1,7 @@
 package com.czeczotka.scala.impatient.chapter17
 
+import scala.collection.immutable.Nil
+
 object TypeParameters {
 
   def main(args: Array[String]) {
@@ -9,8 +11,9 @@ object TypeParameters {
     exercise04_replaceFirst()
     exercise05_richInt()
     exercise06_middleElement()
-
     exercise10_sameTypeParameters()
+
+    variance()
   }
 
   def exercise01_pairSwap() {
@@ -115,4 +118,34 @@ object TypeParameters {
     println(s"swapped $pair")
     println()
   }
+
+  def variance() {
+
+    class Person extends Friend[Person] {
+      override def toString = "Person"
+    }
+
+    class Student extends Person {
+      override def toString = "Student"
+    }
+
+    trait Friend[-T] {
+      def befriend(someone: T) { }
+    }
+
+    case class Pair[+T](first: T, second: T)
+
+    def makeFriendWith(s: Student, f: Friend[Student]) {
+      f.befriend(s)
+    }
+
+    val pair = new Pair[Student](new Student, new Student)
+    println("VARIANCE")
+    println(s"$pair")
+
+    val susan = new Student
+    val fred = new Person
+    makeFriendWith(susan, fred)
+  }
 }
+
