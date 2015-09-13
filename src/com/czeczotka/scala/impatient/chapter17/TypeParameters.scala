@@ -1,7 +1,5 @@
 package com.czeczotka.scala.impatient.chapter17
 
-import scala.collection.immutable.Nil
-
 object TypeParameters {
 
   def main(args: Array[String]) {
@@ -11,6 +9,7 @@ object TypeParameters {
     exercise04_replaceFirst()
     exercise05_richInt()
     exercise06_middleElement()
+    exercise07_iterable()
     exercise10_sameTypeParameters()
 
     variance()
@@ -98,6 +97,25 @@ object TypeParameters {
     println(line(List("Hello", "World")))
     println(line(Array(1, 22, 333, 4444)))
     println(line(Array(1, 22, 333, 4444, 55555)))
+    println()
+  }
+
+  def exercise07_iterable() {
+    class Person {
+      override def toString = "Person"
+    }
+
+    class Student extends Person {
+      override def toString = "Student"
+    }
+
+    class HighSchoolStudent extends Student {
+      override def toString = "HighSchoolStudent"
+    }
+
+    println("EXERCISE 7: Iterable[+A]")
+    val iter = List[Person](new Person, new Student, new HighSchoolStudent).iterator
+    iter.foreach(p => println(s"${p.toString} => ${p.getClass}"))
     println()
   }
 
