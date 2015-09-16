@@ -1,12 +1,13 @@
 package com.czeczotka.scala.impatient.chapter18
 
-import com.czeczotka.scala.impatient.chapter18.exercise.{Author, Title, Document, around, then, show, FluentInterfaceBug, Bug}
+import com.czeczotka.scala.impatient.chapter18.exercise.{Network, Author, Title, Document, around, then, show, FluentInterfaceBug, Bug}
 
 object AdvancedTypes extends App {
 
   exercise01_bug()
   exercise02_bugWithFluentInterface()
   exercise03_documentWithFluentInterface()
+  exercise04_networkMember()
 
   def exercise01_bug() {
     println("EXERCISE 1: Bugsy the Bug")
@@ -30,5 +31,19 @@ object AdvancedTypes extends App {
     book set Title to "Scala for the Impatient" set Author to "Cay Horstmann"
     println(book)
     println()
+  }
+
+  def exercise04_networkMember() {
+    println("EXERCISE 4: Network Member")
+
+    val chatter = new Network
+    val myFace = new Network
+
+    val fred = chatter.join("Fred")
+    val walt = chatter.join("Walt")
+    val barney = myFace.join("Barney")
+
+    println(s"fred equals walt ${fred.equals(walt)}")
+    println(s"fred equals barney ${fred.equals(barney)}")
   }
 }
