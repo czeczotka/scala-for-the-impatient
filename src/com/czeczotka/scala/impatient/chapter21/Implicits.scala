@@ -7,6 +7,7 @@ object Implicits extends App {
 
   fractions()
   exercise02_plusPercentageOperator()
+  exercise03_factorial()
 
   def fractions() {
     val result = 3 * Fraction(4, 5)
@@ -18,6 +19,14 @@ object Implicits extends App {
     val result = 120 +% 10
     println("EXERCISE 2: +% operator")
     println(s"120 +% 10 = $result")
+    println()
+  }
+
+  def exercise03_factorial() {
+    println("EXERCISE 3: ! operator")
+    println("5! = " + (5!))
+    println("0! = " + (0!))
+    println("10! = " + (10!))
     println()
   }
 }
