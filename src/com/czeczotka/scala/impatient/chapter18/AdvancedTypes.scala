@@ -8,6 +8,7 @@ object AdvancedTypes extends App {
   exercise02_bugWithFluentInterface()
   exercise03_documentWithFluentInterface()
   exercise04_networkMember()
+  exercise07_objectWithCloseMethod()
 
   def exercise01_bug() {
     println("EXERCISE 1: Bugsy the Bug")
@@ -45,5 +46,29 @@ object AdvancedTypes extends App {
 
     println(s"fred equals walt ${fred.equals(walt)}")
     println(s"fred equals barney ${fred.equals(barney)}")
+    println()
+  }
+
+  def exercise07_objectWithCloseMethod() {
+
+    type Closeable = { def close(): Unit }
+
+    def processCloseable(closeable: Closeable, function: Closeable => Unit): Unit =
+      try {
+        function(closeable)
+      } finally {
+        closeable.close()
+      }
+
+    val closeable: Closeable = new Object {
+      def close(): Unit = println("close() method")
+    }
+
+    val processFunction: Closeable => Unit = (closeable: Closeable) => println(s"Processing closeable $closeable")
+
+    println("EXERCISE 7: An object of any class that has a 'close(): Unit' method")
+    processCloseable(closeable, processFunction)
+    println()
+
   }
 }
