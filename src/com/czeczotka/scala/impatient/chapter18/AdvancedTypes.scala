@@ -8,6 +8,7 @@ object AdvancedTypes extends App {
   exercise02_bugWithFluentInterface()
   exercise03_documentWithFluentInterface()
   exercise04_networkMember()
+  exercise06_either()
   exercise07_objectWithCloseMethod()
 
   def exercise01_bug() {
@@ -49,6 +50,35 @@ object AdvancedTypes extends App {
     println()
   }
 
+  def exercise06_either() {
+
+    def lineCalculation(seq: Seq[Int], value: Int): String = {
+      calculation(seq, value) match {
+        case Left(indexFound) => s"Element found at index $indexFound"
+        case Right(indexClosest) => s"Closest element at index $indexClosest"
+      }
+    }
+
+    def calculation(seq: Seq[Int], value: Int): Either[Int, Int] = {
+      val mapToAbsWithIndex = seq.zipWithIndex.map(t => (math.abs(t._1 - value), t._2))
+      val min = mapToAbsWithIndex.map(t => t._1).min
+      val findMinWithIndex = mapToAbsWithIndex.find(t => t._1 == min)
+
+      findMinWithIndex match {
+        case Some((0, index)) => Left(index)
+        case Some((v, index)) => Right(index)
+      }
+    }
+
+    println("EXERCISE 6: 'Either' type")
+    println(lineCalculation(Seq(3, 5, 7, 9),  1))  // 0
+    println(lineCalculation(Seq(3, 5, 7, 9),  6))  // 1
+    println(lineCalculation(Seq(3, 5, 7, -9), 7))  // 2
+    println(lineCalculation(Seq(3, -5, 7, 9), 0))  // 0
+    println(lineCalculation(Seq(-3, 5, 7, 9), 10)) // 3
+    println()
+  }
+
   def exercise07_objectWithCloseMethod() {
 
     type Closeable = { def close(): Unit }
@@ -69,6 +99,5 @@ object AdvancedTypes extends App {
     println("EXERCISE 7: An object of any class that has a 'close(): Unit' method")
     processCloseable(closeable, processFunction)
     println()
-
   }
 }
