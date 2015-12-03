@@ -11,6 +11,7 @@ object AdvancedTypes extends App {
   exercise06_either()
   exercise07_objectWithCloseMethod()
   exercise08_printValues()
+  exercise09_dimensionClass()
 
   def exercise01_bug() {
     println("EXERCISE 1: Bugsy the Bug")
@@ -111,6 +112,37 @@ object AdvancedTypes extends App {
     println(printValues((x: Int) => x * x, 3, 6)) // 9 16 25 36
     println(printValues(Array(1, 1, 2, 3, 5, 8, 13, 21, 34, 55), 3, 6))  // 3 5 8 13
     println(printValues(List(1, 3, 5, 7 ,11, 13, 17,19), 2, 5)) // 5 7 11 13
+    println()
+  }
+
+  def exercise09_dimensionClass() {
+
+    abstract class Dim[T](val value: Double, val name: String) {
+      this: T =>
+      protected def create(v: Double): T
+      def +(other: Dim[T]) = create(value + other.value)
+      override def toString() = value + " " + name
+    }
+
+    class Seconds(v: Double) extends Dim[Seconds](v, "s") {
+      override def create(v: Double) = new Seconds(v)
+    }
+
+    /*
+        Adding 'this: T =>' in the abstract Dim class results in a compilation error in the Meters class
+
+        Error:(131, 37) illegal inheritance;
+        self-type Meters does not conform to Dim[Seconds]'s selftype Dim[Seconds] with Seconds
+        class Meters(v: Double) extends Dim[Seconds](v, "m") {
+                                        ^
+     */
+//    class Meters(v: Double) extends Dim[Seconds](v, "m") {
+//      override def create(v: Double) = new Seconds(v)
+//    }
+
+    println("EXERCISE 9: Dimension class with a self type")
+    println("Seconds(10) " + new Seconds(10))
+//    println("Meters(10)  " + new Meters(10))
     println()
   }
 }
