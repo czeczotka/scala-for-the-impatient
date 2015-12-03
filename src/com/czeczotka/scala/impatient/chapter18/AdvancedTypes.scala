@@ -10,6 +10,7 @@ object AdvancedTypes extends App {
   exercise04_networkMember()
   exercise06_either()
   exercise07_objectWithCloseMethod()
+  exercise08_printValues()
 
   def exercise01_bug() {
     println("EXERCISE 1: Bugsy the Bug")
@@ -67,6 +68,7 @@ object AdvancedTypes extends App {
       findMinWithIndex match {
         case Some((0, index)) => Left(index)
         case Some((v, index)) => Right(index)
+        case None => Right(-1)
       }
     }
 
@@ -98,6 +100,17 @@ object AdvancedTypes extends App {
 
     println("EXERCISE 7: An object of any class that has a 'close(): Unit' method")
     processCloseable(closeable, processFunction)
+    println()
+  }
+
+  def exercise08_printValues() {
+
+    def printValues(intToInt: {def apply(int: Int): Int}, start: Int, end: Int) = (for (i <- start to end) yield s"${intToInt(i)} ").mkString
+
+    println("EXERCISE 8: printValues function")
+    println(printValues((x: Int) => x * x, 3, 6)) // 9 16 25 36
+    println(printValues(Array(1, 1, 2, 3, 5, 8, 13, 21, 34, 55), 3, 6))  // 3 5 8 13
+    println(printValues(List(1, 3, 5, 7 ,11, 13, 17,19), 2, 5)) // 5 7 11 13
     println()
   }
 }
