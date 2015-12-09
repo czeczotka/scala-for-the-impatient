@@ -2,10 +2,9 @@ package com.czeczotka.scala.impatient.chapter21
 
 import java.awt.Point
 
-import com.czeczotka.scala.impatient.chapter21.exercise.Fraction
+import com.czeczotka.scala.impatient.chapter21.exercise.{Fraction}
 import com.czeczotka.scala.impatient.chapter21.exercise.Fraction.smaller
 import com.czeczotka.scala.impatient.chapter21.exercise.MyRichInt.int2MyRichInt
-import com.czeczotka.scala.impatient.chapter21.exercise.RichPoint.point2RichPoint
 
 object Implicits extends App {
 
@@ -13,7 +12,8 @@ object Implicits extends App {
   exercise02_plusPercentageOperator()
   exercise03_factorial()
   exercise05_implicitConversionsWithImplicitParameters()
-  exercise06_comparePoints()
+  exercise06_comparePointsLexicographically()
+  exercise07_comparePointsByOriginDistance()
 
   def fractions() {
     val result = 3 * Fraction(4, 5)
@@ -44,11 +44,26 @@ object Implicits extends App {
     println()
   }
 
-  def exercise06_comparePoints() {
+  def exercise06_comparePointsLexicographically() {
+    val p1 = new Point(10, 2)
+    val p2 = new Point(1, 20)
+    import com.czeczotka.scala.impatient.chapter21.exercise.RichPoint.point2RichPointWithLexicographicalCompare
+
+    println("EXERCISE 6: Compare Points lexicographically")
+    println(s"(p1 > p2) = ${p1 > p2}")
+    println(s"(p1 = p2) = ${p1 == p2}")
+    println(s"(p1 < p2) = ${p1 < p2}")
+    println()
+  }
+
+  def exercise07_comparePointsByOriginDistance() {
     val p1 = new Point(10, 2)
     val p2 = new Point(1, 20)
 
-    println("EXERCISE 6: Compare Points lexicographically")
+    // you can switch between two orderings by locally importing the implicit conversion
+    import com.czeczotka.scala.impatient.chapter21.exercise.RichPoint.point2RichPointWithOriginDistanceCompare
+
+    println("EXERCISE 7: Compare Points by their distance to the origin")
     println(s"(p1 > p2) = ${p1 > p2}")
     println(s"(p1 = p2) = ${p1 == p2}")
     println(s"(p1 < p2) = ${p1 < p2}")
